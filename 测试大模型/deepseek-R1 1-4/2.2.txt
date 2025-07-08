@@ -1,0 +1,69 @@
+117.2s 正确
+
+问题分析
+需要计算不定积分：
+$$\int \frac{\sqrt{e^{a+b x}}}{x^2}  dx$$
+首先，简化被积函数：
+$$\sqrt{e^{a+b x}} = (e^{a+b x})^{1/2} = e^{\frac{1}{2}(a+b x)} = e^{\frac{a}{2}} e^{\frac{b x}{2}}$$
+因此，积分化为：
+$$\int \frac{e^{\frac{a}{2}} e^{\frac{b x}{2}}}{x^2}  dx = e^{\frac{a}{2}} \int \frac{e^{\frac{b x}{2}}}{x^2}  dx$$
+其中 $e^{\frac{a}{2}}$ 是常数因子。令 $k = \frac{b}{2}$，则积分简化为：
+$$e^{\frac{a}{2}} \int \frac{e^{k x}}{x^2}  dx$$
+现在，问题归结为计算 $\int \frac{e^{k x}}{x^2}  dx$。该积分涉及指数函数和代数函数的组合，分母为 $x^2$。此类积分通常无法用初等函数表示，需引入特殊函数——指数积分函数（Exponential Integral）。
+解法策略
+采用代换法结合指数积分函数求解：
+
+令 $t = k x$，将积分转化为标准形式。
+计算 $\int \frac{e^t}{t^2}  dt$，通过分部积分将其表示为指数积分函数 $Ei(t)$ 的形式。
+代回原变量，得到结果。
+
+详细推导步骤
+步骤 1: 代换变量
+令 $t = k x$，其中 $k = \frac{b}{2}$。则：
+$$dt = k  dx \implies dx = \frac{dt}{k}$$
+代入积分：
+$$\int \frac{e^{k x}}{x^2}  dx = \int \frac{e^t}{(t/k)^2} \cdot \frac{dt}{k} = \int \frac{e^t \cdot k^2}{t^2} \cdot \frac{dt}{k} = k \int \frac{e^t}{t^2}  dt$$
+步骤 2: 计算 $\int \frac{e^t}{t^2}  dt$
+使用分部积分法。设：
+$$u = t^{-2}, \quad dv = e^t  dt$$
+则：
+$$du = -2 t^{-3}  dt, \quad v = e^t$$
+分部积分公式为：
+$$\int u  dv = u v - \int v  du$$
+代入：
+$$\int \frac{e^t}{t^2}  dt = \frac{e^t}{t^2} - \int e^t \left( -2 t^{-3} \right)  dt = \frac{e^t}{t^2} + 2 \int \frac{e^t}{t^3}  dt$$
+此步骤得到更复杂的积分 $\int \frac{e^t}{t^3}  dt$，但可进一步分析。考虑导数关系：
+$$\frac{d}{dt} \left( \frac{e^t}{t} \right) = e^t \left( \frac{1}{t} - \frac{1}{t^2} \right)$$
+重写为：
+$$e^t \left( \frac{1}{t} - \frac{1}{t^2} \right) = \frac{d}{dt} \left( \frac{e^t}{t} \right)$$
+解出 $\frac{e^t}{t^2}$:
+$$\frac{e^t}{t^2} = \frac{e^t}{t} - \frac{d}{dt} \left( \frac{e^t}{t} \right)$$
+因此：
+$$\int \frac{e^t}{t^2}  dt = \int \left( \frac{e^t}{t} - \frac{d}{dt} \left( \frac{e^t}{t} \right) \right) dt = \int \frac{e^t}{t}  dt - \frac{e^t}{t} + C$$
+其中 $\int \frac{e^t}{t}  dt$ 是指数积分函数，记为 $Ei(t)$：
+$$\int \frac{e^t}{t}  dt = Ei(t) + C$$
+所以：
+$$\int \frac{e^t}{t^2}  dt = Ei(t) - \frac{e^t}{t} + C$$
+步骤 3: 代回变量
+由 $t = k x$ 和 $k = \frac{b}{2}$:
+$$\int \frac{e^{k x}}{x^2}  dx = k \left( Ei(t) - \frac{e^t}{t} \right) + C = k \left( Ei(k x) - \frac{e^{k x}}{k x} \right) + C$$
+简化：
+$$= k Ei(k x) - \frac{e^{k x}}{x} + C$$
+代入 $k = \frac{b}{2}$:
+$$= \frac{b}{2} Ei\left(\frac{b}{2} x\right) - \frac{e^{\frac{b}{2} x}}{x} + C$$
+步骤 4: 代入原积分
+原积分为：
+$$e^{\frac{a}{2}} \int \frac{e^{k x}}{x^2}  dx = e^{\frac{a}{2}} \left[ \frac{b}{2} Ei\left(\frac{b}{2} x\right) - \frac{e^{\frac{b}{2} x}}{x} \right] + C$$
+简化第二项：
+$$e^{\frac{a}{2}} e^{\frac{b}{2} x} = e^{\frac{a}{2} + \frac{b x}{2}} = e^{\frac{1}{2}(a + b x)} = \sqrt{e^{a + b x}}$$
+因此：
+$$e^{\frac{a}{2}} \left( -\frac{e^{\frac{b}{2} x}}{x} \right) = -\frac{\sqrt{e^{a + b x}}}{x}$$
+最终结果为：
+$$e^{\frac{a}{2}} \cdot \frac{b}{2} Ei\left(\frac{b}{2} x\right) - \frac{\sqrt{e^{a + b x}}}{x} + C$$
+最终解答
+$$\boxed{\dfrac{b}{2} e^{\frac{a}{2}} \text{Ei}\left( \dfrac{b x}{2} \right) - \dfrac{\sqrt{e^{a + b x}}}{x} + C}$$
+附注
+
+指数积分函数 $Ei(x)$ 定义为 $Ei(x) = - \int_{-x}^{\infty} \frac{e^{-t}}{t}  dt$，或等价于 $\int \frac{e^t}{t}  dt$（主值积分）。在特殊函数中，此为标准表示。
+假设条件：积分在 $x > 0$ 或 $x < 0$ 时需考虑定义域，但结果形式相同。假设 $e^{a + b x} > 0$ 恒成立。
+其他方法：可采用级数展开（如 $e^{k x} = \sum_{n=0}^{\infty} \frac{(k x)^n}{n!}$)，但结果涉及无穷级数，不如特殊函数形式简洁。分部积分直接应用会导致高阶项，故选择代换结合指数积分的方法。

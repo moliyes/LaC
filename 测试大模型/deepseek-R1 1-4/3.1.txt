@@ -1,0 +1,71 @@
+244.3s 正确
+
+任务解答：计算不定积分 $\int \frac{x^2}{\log^2(c x)}  dx$
+步骤 1: 分析积分的基本特征和可能的解法策略
+
+被积函数为 $\frac{x^2}{\log^2(c x)}$，其中 $\log(c x)$ 通常表示自然对数（即 $\ln(c x)$），在微积分中若无特殊说明，$\log$ 默认为自然对数。若有歧义，结果形式类似。
+分子为幂函数 $x^2$，分母为复合函数 $\log(c x)$ 的平方。$\log(c x) = \log c + \log x$，其中 $\log c$ 为常数。
+此类积分（幂函数与对数函数的组合）常采用代换法简化。观察分母的对数结构，设代换 $t = \log(c x)$ 可简化表达式。
+代换后，积分转化为指数函数与代数函数的组合，再通过分部积分求解。其中，$\int \frac{e^{kt}}{t} dt$ 无法用初等函数表示，需引入指数积分函数 $\text{Ei}(x)$。
+
+步骤 2: 逐步推导过程
+步骤 2.1: 代换法简化积分
+设 $t = \log(c x)$。则：
+$$t = \log(c x) \implies \frac{dt}{dx} = \frac{d}{dx} \log(c x) = \frac{1}{x} \implies dx = x  dt$$
+由 $t = \log(c x)$，得 $c x = e^t$，即：
+$$x = \frac{e^t}{c}$$
+代入 $dx$：
+$$dx = \frac{e^t}{c}  dt$$
+将 $x$ 和 $dx$ 代入原积分：
+$$\int \frac{x^2}{\log^2(c x)}  dx = \int \frac{\left( \frac{e^t}{c} \right)^2}{t^2} \cdot \frac{e^t}{c}  dt = \int \frac{\frac{e^{2t}}{c^2}}{t^2} \cdot \frac{e^t}{c}  dt = \int \frac{e^{3t}}{c^3 t^2}  dt = \frac{1}{c^3} \int \frac{e^{3t}}{t^2}  dt$$
+因此，原积分转化为：
+$$\boxed{\int \frac{x^{2}}{\log^{2}(c x)}  dx = \frac{1}{c^{3}} \int \frac{e^{3t}}{t^{2}}  dt}$$
+步骤 2.2: 计算 $\int \frac{e^{3t}}{t^2}  dt$ 使用分部积分
+考虑积分 $I = \int \frac{e^{3t}}{t^2}  dt$。使用分部积分法，设：
+$$u = e^{3t}, \quad dv = t^{-2}  dt$$
+则：
+$$du = 3e^{3t}  dt, \quad v = \int t^{-2}  dt = -t^{-1} = -\frac{1}{t}$$
+分部积分公式 $\int u  dv = u v - \int v  du$ 给出：
+$$I = e^{3t} \cdot \left( -\frac{1}{t} \right) - \int \left( -\frac{1}{t} \right) \cdot 3e^{3t}  dt = -\frac{e^{3t}}{t} + 3 \int \frac{e^{3t}}{t}  dt$$
+其中，$\int \frac{e^{3t}}{t}  dt$ 是指数积分，记为 $\text{Ei}(3t)$：
+$$\boxed{\int \frac{e^{3t}}{t}  dt = \text{Ei}(3t) + C}$$
+因此：
+$$I = -\frac{e^{3t}}{t} + 3 \text{Ei}(3t) + C$$
+即：
+$$\boxed{\int \frac{e^{3t}}{t^{2}}  dt = -\frac{e^{3t}}{t} + 3 \text{Ei}(3t) + C}$$
+步骤 2.3: 代回原变量
+由代换 $t = \log(c x)$，有：
+$$e^{3t} = e^{3 \log(c x)} = (e^{\log(c x)})^3 = (c x)^3 = c^3 x^3$$
+代入 $I$：
+$$\int \frac{e^{3t}}{t^2}  dt = -\frac{c^3 x^3}{\log(c x)} + 3 \text{Ei}(3 \log(c x)) + C$$
+原积分为：
+$$\int \frac{x^{2}}{\log^{2}(c x)}  dx = \frac{1}{c^3} \left( -\frac{c^3 x^3}{\log(c x)} + 3 \text{Ei}(3 \log(c x)) \right) + C = -\frac{x^3}{\log(c x)} + \frac{3}{c^3} \text{Ei}(3 \log(c x)) + C$$
+因此：
+$$\boxed{\int \frac{x^{2}}{\log^{2}(c x)}  dx = -\frac{x^{3}}{\log(c x)} + \frac{3}{c^{3}} \text{Ei}(3 \log(c x)) + C}$$
+步骤 3: 验证结果
+对结果求导，应得原被积函数：
+设 $F(x) = -\frac{x^3}{\log(c x)} + \frac{3}{c^3} \text{Ei}(3 \log(c x))$。
+
+第一项导数：令 $L = \log(c x)$，
+$$\frac{d}{dx} \left( -\frac{x^3}{L} \right) = -\left( \frac{3x^2 L - x^3 \cdot \frac{1}{x}}{L^2} \right) = -\left( \frac{3x^2 L - x^2}{L^2} \right) = -x^2 \frac{3L - 1}{L^2}$$
+
+第二项导数：$\frac{d}{dx} \text{Ei}(3L) = \frac{e^{3L}}{3L} \cdot \frac{d}{dx}(3L) = \frac{e^{3L}}{3L} \cdot 3 \cdot \frac{1}{x} = \frac{e^{3L}}{L x}$，其中 $e^{3L} = c^3 x^3$，所以
+$$\frac{d}{dx} \left( \frac{3}{c^3} \text{Ei}(3L) \right) = \frac{3}{c^3} \cdot \frac{c^3 x^3}{L x} = 3 \frac{x^2}{L}$$
+
+总和：
+$$F'(x) = -x^2 \frac{3L - 1}{L^2} + 3 \frac{x^2}{L} = x^2 \left( -\frac{3L - 1}{L^2} + \frac{3}{L} \right) = x^2 \left( -\frac{3L - 1}{L^2} + \frac{3L}{L^2} \right) = x^2 \frac{ -3L + 1 + 3L }{L^2} = \frac{x^2}{L^2} = \frac{x^2}{\log^2(c x)}$$
+
+
+导数等于原被积函数，验证正确。
+步骤 4: 其他方法说明
+
+方法 2: 直接设 $u = \log x$
+设 $u = \log x$，则 $\log(c x) = \log c + u$，$dx = e^u  du$，积分化为 $\int \frac{e^{3u}}{(\log c + u)^2}  du$，再设 $v = \log c + u$，结果相同。
+方法 3: 参数化积分
+考虑 $I(a) = \int \frac{x^a}{\log^2(c x)}  dx$，求导或积分参数方程，但计算复杂，且最终仍需指数积分。
+选择代换法为主要方法，因其直接且清晰。
+
+最终解答
+不定积分为：
+$$\boxed{\int \frac{x^{2}}{\log^{2}(c x)}  dx = -\frac{x^{3}}{\log(c x)} + \frac{3}{c^{3}} \operatorname{Ei}(3 \log(c x)) + C}$$
+其中 $\operatorname{Ei}(x)$ 是指数积分函数，定义为 $\operatorname{Ei}(x) = \int_{-\infty}^{x} \frac{e^{t}}{t}  dt$（主值积分）。若 $\log$ 表示常用对数（以 10 为底），结果形式类似，但通常 $\log$ 在微积分中为自然对数。

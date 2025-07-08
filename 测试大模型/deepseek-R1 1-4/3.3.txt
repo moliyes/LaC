@@ -1,0 +1,69 @@
+238.3s 正确
+
+解决积分问题
+问题描述
+计算以下不定积分：
+$$\int \frac{a x^2 + 2 b n x \log \left(c x^n\right)}{\left(a x^2 + b x \log^2 \left(c x^n\right)\right)^2}  dx$$
+分析积分特征和解法策略
+被积函数包含多项式项 $x^2$ 和对数项 $\log(c x^n)$，其中 $c$ 和 $n$ 是常数。分母是平方形式，分子包含类似分母内部结构的项。考虑通过变量代换简化积分。令 $t = \log(c x^n)$，则：
+$$t = \log(c x^n) = \log c + n \log x$$
+微分得：
+$$dt = \frac{n}{x} dx \quad \Rightarrow \quad dx = \frac{x}{n} dt$$
+需要将 $x$ 表示为 $t$ 的函数。由 $t = \log c + n \log x$，解得：
+$$\log x = \frac{t - \log c}{n} \quad \Rightarrow \quad x = \exp\left(\frac{t - \log c}{n}\right) = c^{-1/n} e^{t/n}$$
+令 $k = c^{-1/n}$，则 $x = k e^{t/n}$。接下来，将原积分中的变量替换为 $t$。
+逐步推导
+
+
+替换变量：
+将 $x = k e^{t/n}$ 和 $dx = \frac{x}{n} dt = \frac{k e^{t/n}}{n} dt$ 代入原积分。
+
+
+分子替换：
+$$a x^2 + 2 b n x \log(c x^n) = a (k e^{t/n})^2 + 2 b n (k e^{t/n}) t = a k^2 e^{2t/n} + 2 b n k e^{t/n} t$$
+
+
+分母替换：
+$$a x^2 + b x \log^2(c x^n) = a (k e^{t/n})^2 + b (k e^{t/n}) t^2 = a k^2 e^{2t/n} + b k e^{t/n} t^2$$
+分母为平方：
+$$\left(a x^2 + b x \log^2(c x^n)\right)^2 = \left(a k^2 e^{2t/n} + b k e^{t/n} t^2\right)^2$$
+
+
+被积函数：
+$$\frac{a k^2 e^{2t/n} + 2 b n k e^{t/n} t}{\left(a k^2 e^{2t/n} + b k e^{t/n} t^2\right)^2} \cdot \frac{k e^{t/n}}{n} dt$$
+提取公因子 $k e^{t/n}$：
+$$= \frac{k e^{t/n} (a k e^{t/n} + 2 b n t)}{[k e^{t/n} (a k e^{t/n} + b t^2)]^2} \cdot \frac{k e^{t/n}}{n} dt$$
+简化：
+$$= \frac{k e^{t/n} (a k e^{t/n} + 2 b n t)}{k^2 e^{2t/n} (a k e^{t/n} + b t^2)^2} \cdot \frac{k e^{t/n}}{n} dt = \frac{a k e^{t/n} + 2 b n t}{k e^{t/n} (a k e^{t/n} + b t^2)^2} \cdot \frac{k e^{t/n}}{n} dt$$
+进一步简化：
+$$= \frac{a k e^{t/n} + 2 b n t}{(a k e^{t/n} + b t^2)^2} \cdot \frac{1}{n} dt$$
+
+
+引入新变量：
+令 $v = a k e^{t/n} + b t^2$，则：
+$$\frac{dv}{dt} = a k \cdot \frac{1}{n} e^{t/n} + 2 b t = \frac{a k}{n} e^{t/n} + 2 b t$$
+分子为：
+$$a k e^{t/n} + 2 b n t = n \left( \frac{a k}{n} e^{t/n} + 2 b t \right) = n \frac{dv}{dt}$$
+代入被积函数：
+$$\frac{1}{n} \cdot \frac{n \frac{dv}{dt}}{v^2} dt = \frac{\frac{dv}{dt}}{v^2} dt = v^{-2} dv$$
+
+
+积分计算：
+$$\int v^{-2}  dv = -v^{-1} + C$$
+其中 $C$ 是积分常数。
+
+
+代回原变量：
+$$v = a k e^{t/n} + b t^2$$
+由 $k = c^{-1/n}$ 和 $e^{t/n} = (e^t)^{1/n}$，且 $e^t = e^{\log(c x^n)} = c x^n$，得：
+$$e^{t/n} = (c x^n)^{1/n} = c^{1/n} x$$
+所以：
+$$k e^{t/n} = c^{-1/n} \cdot c^{1/n} x = x$$
+代入 $v$：
+$$v = a \cdot x + b t^2 = a x + b \left( \log(c x^n) \right)^2$$
+因此：
+$$-v^{-1} + C = -\frac{1}{a x + b \left( \log(c x^n) \right)^2} + C$$
+
+
+最终解答
+$$\boxed{-\dfrac{1}{a x + b \left( \log \left(c x^{n}\right) \right)^{2}} + C}$$

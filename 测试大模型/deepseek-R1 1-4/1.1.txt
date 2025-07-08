@@ -1,0 +1,59 @@
+276.9s 结果错误
+
+问题分析
+需要计算不定积分：
+$$\int \frac{1}{\sqrt{x} \sqrt{a x + b x^3 + c x^5}}  dx$$
+首先，分析被积函数。分母包含 $\sqrt{x}$ 和 $\sqrt{a x + b x^3 + c x^5}$。通过代数简化，将两个平方根合并：
+$$\sqrt{x} \sqrt{a x + b x^3 + c x^5} = \sqrt{x (a x + b x^3 + c x^5)} = \sqrt{a x^2 + b x^4 + c x^6}$$
+提取 $x^2$ 因子：
+$$\sqrt{a x^2 + b x^4 + c x^6} = \sqrt{x^2 (a + b x^2 + c x^4)} = |x| \sqrt{a + b x^2 + c x^4}$$
+由于积分涉及 $\sqrt{x}$，假设 $x > 0$，因此 $|x| = x$，被积函数简化为：
+$$\frac{1}{x \sqrt{a + b x^2 + c x^4}}$$
+积分变为：
+$$\int \frac{1}{x \sqrt{a + b x^2 + c x^4}}  dx$$
+代换法
+令 $t = x^2$，则 $dt = 2x  dx$，即 $dx = \frac{dt}{2x}$。代入：
+$$\int \frac{1}{x \sqrt{a + b t + c t^2}} \cdot \frac{dt}{2x} = \int \frac{1}{x^2 \sqrt{a + b t + c t^2}} \cdot \frac{dt}{2}$$
+由于 $x^2 = t$，有：
+$$\frac{1}{2} \int \frac{1}{t \sqrt{c t^2 + b t + a}}  dt$$
+现在需计算：
+$$J = \int \frac{dt}{t \sqrt{c t^2 + b t + a}}$$
+第二层代换
+令 $u = \frac{1}{t}$，则 $du = -\frac{1}{t^2} dt$，即 $dt = - \frac{du}{u^2}$。代入：
+$$J = \int \frac{1}{\frac{1}{u} \sqrt{c \left(\frac{1}{u}\right)^2 + b \left(\frac{1}{u}\right) + a}} \left( - \frac{du}{u^2} \right) = \int u \cdot \frac{1}{\sqrt{\frac{c}{u^2} + \frac{b}{u} + a}} \left( - \frac{du}{u^2} \right)$$
+简化分母：
+$$\sqrt{\frac{c}{u^2} + \frac{b}{u} + a} = \sqrt{\frac{c + b u + a u^2}{u^2}} = \frac{\sqrt{a u^2 + b u + c}}{|u|}$$
+假设 $u > 0$（因 $t > 0$ 故 $u > 0$)，有 $|u| = u$，所以：
+$$J = \int u \cdot \frac{u}{\sqrt{a u^2 + b u + c}} \left( - \frac{du}{u^2} \right) = - \int \frac{du}{\sqrt{a u^2 + b u + c}}$$
+因此，原积分为：
+$$\frac{1}{2} J = -\frac{1}{2} \int \frac{du}{\sqrt{a u^2 + b u + c}}$$
+求解简化后的积分
+计算：
+$$K = \int \frac{du}{\sqrt{a u^2 + b u + c}}$$
+对二次式配方：
+$$a u^2 + b u + c = a \left( u^2 + \frac{b}{a} u + \frac{c}{a} \right) = a \left[ \left( u + \frac{b}{2a} \right)^2 - \left( \frac{b}{2a} \right)^2 + \frac{c}{a} \right]$$
+$$= a \left[ \left( u + \frac{b}{2a} \right)^2 + \frac{4ac - b^2}{4a^2} \right]$$
+令 $\delta = \frac{4ac - b^2}{4a^2}$，则：
+$$\sqrt{a u^2 + b u + c} = \sqrt{a} \sqrt{ \left( u + \frac{b}{2a} \right)^2 + \delta }$$
+积分变为：
+$$K = \int \frac{du}{\sqrt{a} \sqrt{ \left( u + \frac{b}{2a} \right)^2 + \delta }} = \frac{1}{\sqrt{a}} \int \frac{dv}{\sqrt{v^2 + \delta}}$$
+其中 $v = u + \frac{b}{2a}$，$dv = du$。标准积分公式为：
+$$\int \frac{dv}{\sqrt{v^2 + \delta}} = \ln \left| v + \sqrt{v^2 + \delta} \right| + C$$
+所以：
+$$K = \frac{1}{\sqrt{a}} \ln \left| v + \sqrt{v^2 + \delta} \right| + C = \frac{1}{\sqrt{a}} \ln \left| u + \frac{b}{2a} + \frac{\sqrt{a u^2 + b u + c}}{\sqrt{a}} \right| + C$$
+回代变量
+原积分为：
+$$-\frac{1}{2} K = -\frac{1}{2 \sqrt{a}} \ln \left| u + \frac{b}{2a} + \frac{\sqrt{a u^2 + b u + c}}{\sqrt{a}} \right| + C$$
+回忆 $u = \frac{1}{t}$ 且 $t = x^2$，故 $u = \frac{1}{x^2}$。代入：
+$$a u^2 + b u + c = a \left( \frac{1}{x^4} \right) + b \left( \frac{1}{x^2} \right) + c = \frac{a}{x^4} + \frac{b}{x^2} + c$$
+$$\sqrt{a u^2 + b u + c} = \sqrt{ \frac{a + b x^2 + c x^4}{x^4} } = \frac{\sqrt{a + b x^2 + c x^4}}{x^2}$$
+因此：
+$$u + \frac{b}{2a} + \frac{\sqrt{a u^2 + b u + c}}{\sqrt{a}} = \frac{1}{x^2} + \frac{b}{2a} + \frac{1}{\sqrt{a}} \cdot \frac{\sqrt{a + b x^2 + c x^4}}{x^2}$$
+代入积分表达式：
+$$-\frac{1}{2 \sqrt{a}} \ln \left| \frac{1}{x^2} \left( 1 + \frac{b}{2a} x^2 + \frac{\sqrt{a + b x^2 + c x^4}}{\sqrt{a}} \right) \right| + C$$
+$$= -\frac{1}{2 \sqrt{a}} \left( -\ln |x^2| + \ln \left| 1 + \frac{b}{2a} x^2 + \frac{\sqrt{a + b x^2 + c x^4}}{\sqrt{a}} \right| \right) + C$$
+$$= \frac{1}{2 \sqrt{a}} \cdot 2 \ln |x| - \frac{1}{2 \sqrt{a}} \ln \left| 1 + \frac{b}{2a} x^2 + \frac{\sqrt{a + b x^2 + c x^4}}{\sqrt{a}} \right| + C$$
+假设 $x > 0$，有：
+$$\int \frac{1}{\sqrt{x} \sqrt{a x + b x^3 + c x^5}}  dx = \frac{1}{\sqrt{a}} \ln x - \frac{1}{2 \sqrt{a}} \ln \left( 1 + \frac{b}{2a} x^2 + \frac{\sqrt{a + b x^2 + c x^4}}{\sqrt{a}} \right) + C$$
+最终答案
+$$\boxed{\int \frac{1}{\sqrt{x} \sqrt{a x + b x^3 + c x^5}}  dx = \frac{1}{\sqrt{a}} \ln x - \frac{1}{2 \sqrt{a}} \ln \left( 1 + \frac{b}{2a} x^2 + \frac{\sqrt{a + b x^2 + c x^4}}{\sqrt{a}} \right) + C}$$

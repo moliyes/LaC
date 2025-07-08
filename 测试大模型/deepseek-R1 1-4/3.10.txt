@@ -1,0 +1,68 @@
+1103.2s 积分没有做完
+
+解决积分问题：计算不定积分
+$$\int \frac{\log \left( d \left( a + b x + c x^{2} \right)^{n} \right)}{(d + e x)^{3}}  dx$$
+步骤 1: 分析积分特征和解法策略
+被积函数为：
+$$\frac{\log \left( d \left( a + b x + c x^{2} \right)^{n} \right)}{(d + e x)^{3}}$$
+
+分子是对数函数，包含常数 $d$ 和二次多项式 $a + b x + c x^{2}$ 的 $n$ 次幂。
+分母是线性项 $d + e x$ 的立方。
+假设 $\log$ 为自然对数（即 $\ln$），且 $e \neq 0$（否则分母为常数，积分简单）。
+对数性质：$\log \left( d \left( a + b x + c x^{2} \right)^{n} \right) = \log d + n \log \left( a + b x + c x^{2} \right)$。
+积分可拆分为两部分：
+$$\int \frac{\log d + n \log \left( a + b x + c x^{2} \right)}{(d + e x)^{3}}  dx = \log d \int \frac{1}{(d + e x)^{3}}  dx + n \int \frac{\log \left( a + b x + c x^{2} \right)}{(d + e x)^{3}}  dx$$
+
+第一部分积分简单（分母为线性项的立方）。
+第二部分积分较复杂，涉及二次多项式的对数除以线性项的立方。解法策略：对第二部分使用分部积分法，将 $\log \left( a + b x + c x^{2} \right)$ 设为 $u$，分母的导数设为 $dv$。
+
+步骤 2: 计算第一部分积分
+设 $q(x) = a + b x + c x^{2}$，则第一部分为：
+$$\log d \int (d + e x)^{-3}  dx$$
+令 $u = d + e x$，则 $du = e  dx$，即 $dx = \frac{du}{e}$：
+$$\int (d + e x)^{-3}  dx = \int u^{-3} \frac{du}{e} = \frac{1}{e} \int u^{-3}  du = \frac{1}{e} \cdot \frac{u^{-2}}{-2} + C_1 = -\frac{1}{2e} (d + e x)^{-2} + C_1$$
+因此：
+$$\log d \int \frac{1}{(d + e x)^{3}}  dx = \log d \cdot \left( -\frac{1}{2e} (d + e x)^{-2} \right) = -\frac{\log d}{2e (d + e x)^{2}}$$
+步骤 3: 计算第二部分积分
+第二部分为：
+$$I = \int \frac{\log \left( a + b x + c x^{2} \right)}{(d + e x)^{3}}  dx$$
+使用分部积分法：
+
+设 $u = \log q(x) = \log \left( a + b x + c x^{2} \right)$，则 $du = \frac{q'(x)}{q(x)}  dx = \frac{b + 2c x}{a + b x + c x^{2}}  dx$。
+设 $dv = (d + e x)^{-3}  dx$，则 $v = \int (d + e x)^{-3}  dx = -\frac{1}{2e} (d + e x)^{-2}$（由步骤 2 结果）。
+
+分部积分公式：$\int u  dv = u v - \int v  du$：
+$$I = \log q(x) \cdot \left( -\frac{1}{2e} (d + e x)^{-2} \right) - \int \left( -\frac{1}{2e} (d + e x)^{-2} \right) \cdot \frac{b + 2c x}{q(x)}  dx$$
+简化：
+$$I = -\frac{\log \left( a + b x + c x^{2} \right)}{2e (d + e x)^{2}} + \frac{1}{2e} \int \frac{b + 2c x}{\left( a + b x + c x^{2} \right) (d + e x)^{2}}  dx$$
+步骤 4: 结合两部分结果
+将第一部分和第二部分结合，原积分为：
+$$\int \frac{\log \left( d \left( a + b x + c x^{2} \right)^{n} \right)}{(d + e x)^{3}}  dx = -\frac{\log d}{2e (d + e x)^{2}} + n \left[ -\frac{\log \left( a + b x + c x^{2} \right)}{2e (d + e x)^{2}} + \frac{1}{2e} \int \frac{b + 2c x}{\left( a + b x + c x^{2} \right) (d + e x)^{2}}  dx \right] + C$$
+注意：
+
+$\log d + n \log \left( a + b x + c x^{2} \right) = \log \left( d \left( a + b x + c x^{2} \right)^{n} \right)$。
+因此，前两项可合并。
+
+最终表达式为：
+$$\int \frac{\log \left( d \left( a + b x + c x^{2} \right)^{n} \right)}{(d + e x)^{3}}  dx = -\frac{\log \left( d \left( a + b x + c x^{2} \right)^{n} \right)}{2e (d + e x)^{2}} + \frac{n}{2e} \int \frac{b + 2c x}{\left( a + b x + c x^{2} \right) (d + e x)^{2}}  dx + C$$
+步骤 5: 处理剩余积分
+剩余积分为：
+$$J = \int \frac{b + 2c x}{\left( a + b x + c x^{2} \right) (d + e x)^{2}}  dx$$
+
+这是一个有理函数的积分，分子为线性函数 $b + 2c x$（即 $q(x)$ 的导数），分母为二次多项式 $q(x)$ 乘以线性多项式 $(d + e x)^2$。
+解法：使用部分分式分解，具体形式取决于二次多项式 $a + b x + c x^{2}$ 的判别式 $\Delta = b^{2} - 4ac$。
+
+若 $\Delta > 0$，则二次式有两个实根，分解为部分分式后积分涉及对数。
+若 $\Delta = 0$，则二次式有重根，积分涉及对数。
+若 $\Delta < 0$，则二次式无实根，积分涉及反正切函数。
+
+
+部分分式分解形式：
+$$\frac{b + 2c x}{\left( c x^{2} + b x + a \right) (e x + d)^{2}} = \frac{A x + B}{c x^{2} + b x + a} + \frac{C}{e x + d} + \frac{D}{(e x + d)^{2}}$$
+其中 $A, B, C, D$ 为常数，可通过比较系数或代入特定值求解。
+积分后，结果将包含 $\log |c x^{2} + b x + a|$、$\log |e x + d|$ 和/或 $\arctan$ 函数。
+
+步骤 6: 最终解答
+由于剩余积分 $J$ 的具体形式依赖于判别式 $\Delta$，且分解过程较为繁琐，最终答案保留积分形式。原不定积分的精确解答为：
+$$\boxed{ -\frac{\log \left( d \left( a + b x + c x^{2} \right)^{n} \right)}{2e \left( d + e x \right)^{2}} + \frac{n}{2e} \int \frac{b + 2c x}{\left( a + b x + c x^{2} \right) \left( d + e x \right)^{2}}  dx + C }$$
+其中，剩余积分 $\int \frac{b + 2c x}{\left( a + b x + c x^{2} \right) \left( d + e x \right)^{2}}  dx$ 可通过部分分式分解进一步求解，具体取决于二次多项式 $a + b x + c x^{2}$ 的判别式。

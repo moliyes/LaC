@@ -1,0 +1,81 @@
+284.1s 正确
+
+任务描述
+计算不定积分：$\int \sin^2(c + d x) (a + b \tan(c + d x))  dx$，其中 $a, b, c, d$ 为常数，$x$ 为变量。
+分析积分的基本特征和可能的解法策略
+被积函数为 $\sin^2(c + d x) (a + b \tan(c + d x))$。
+
+角度参数均为 $c + d x$，其中 $c$ 和 $d$ 为常数，$x$ 为变量。
+使用三角恒等式简化：$\sin^2 \theta = \frac{1 - \cos 2\theta}{2}$，$\tan \theta = \frac{\sin \theta}{\cos \theta}$。
+令 $\theta = c + d x$，则 $d\theta = d  dx$，即 $dx = \frac{d\theta}{d}$，积分可转化为关于 $\theta$ 的形式。
+被积函数可拆分为两部分：$a \sin^2 \theta$ 和 $b \sin^2 \theta \tan \theta = b \frac{\sin^3 \theta}{\cos \theta}$。
+解法策略：代换 $\theta = c + d x$，将积分分为两个部分分别计算，再组合结果并代回 $x$。
+
+逐步推导过程
+步骤1: 变量代换
+令 $\theta = c + d x$，则：
+$$d\theta = d  dx \implies dx = \frac{d\theta}{d}$$
+积分变为：
+$$\int \sin^2(c + d x) (a + b \tan(c + d x))  dx = \int \sin^2 \theta (a + b \tan \theta) \cdot \frac{d\theta}{d} = \frac{1}{d} \int \sin^2 \theta (a + b \tan \theta)  d\theta$$
+代入 $\tan \theta = \frac{\sin \theta}{\cos \theta}$：
+$$a + b \tan \theta = a + b \frac{\sin \theta}{\cos \theta}$$
+所以：
+$$\frac{1}{d} \int \sin^2 \theta \left( a + b \frac{\sin \theta}{\cos \theta} \right) d\theta = \frac{1}{d} \int \left( a \sin^2 \theta + b \frac{\sin^3 \theta}{\cos \theta} \right) d\theta = \frac{1}{d} \left[ a \int \sin^2 \theta  d\theta + b \int \frac{\sin^3 \theta}{\cos \theta}  d\theta \right]$$
+现在需要计算两个积分：$I_1 = \int \sin^2 \theta  d\theta$ 和 $I_2 = \int \frac{\sin^3 \theta}{\cos \theta}  d\theta$。
+步骤2: 计算 $I_1 = \int \sin^2 \theta  d\theta$
+使用三角恒等式 $\sin^2 \theta = \frac{1 - \cos 2\theta}{2}$：
+$$I_1 = \int \frac{1 - \cos 2\theta}{2}  d\theta = \frac{1}{2} \int d\theta - \frac{1}{2} \int \cos 2\theta  d\theta$$
+计算：
+$$\int d\theta = \theta, \quad \int \cos 2\theta  d\theta = \frac{1}{2} \sin 2\theta$$
+所以：
+$$I_1 = \frac{1}{2} \theta - \frac{1}{2} \cdot \frac{1}{2} \sin 2\theta + C_1 = \frac{1}{2} \theta - \frac{1}{4} \sin 2\theta + C_1$$
+其中 $\sin 2\theta = 2 \sin \theta \cos \theta$，因此：
+$$I_1 = \frac{1}{2} \theta - \frac{1}{4} \cdot 2 \sin \theta \cos \theta + C_1 = \frac{1}{2} \theta - \frac{1}{2} \sin \theta \cos \theta + C_1$$
+$$\boxed{\int \sin^{2}\theta  d\theta = \frac{1}{2}\theta - \frac{1}{2}\sin\theta\cos\theta + C_{1}}$$
+步骤3: 计算 $I_2 = \int \frac{\sin^3 \theta}{\cos \theta}  d\theta$
+使用恒等式 $\sin^3 \theta = \sin \theta \cdot \sin^2 \theta = \sin \theta (1 - \cos^2 \theta)$：
+$$I_2 = \int \frac{\sin \theta (1 - \cos^2 \theta)}{\cos \theta}  d\theta = \int \sin \theta \left( \frac{1}{\cos \theta} - \cos \theta \right) d\theta = \int \left( \frac{\sin \theta}{\cos \theta} - \sin \theta \cos \theta \right) d\theta$$
+即：
+$$I_2 = \int \tan \theta  d\theta - \int \sin \theta \cos \theta  d\theta$$
+计算每个积分：
+
+$\int \tan \theta  d\theta = \int \frac{\sin \theta}{\cos \theta}  d\theta$，令 $u = \cos \theta$，则 $du = -\sin \theta  d\theta$：
+$$\int \frac{\sin \theta}{\cos \theta}  d\theta = \int -\frac{1}{u}  du = -\ln |u| + C_2 = -\ln |\cos \theta| + C_2$$
+
+$\int \sin \theta \cos \theta  d\theta$，令 $v = \sin \theta$，则 $dv = \cos \theta  d\theta$：
+$$\int v  dv = \frac{v^2}{2} + C_3 = \frac{\sin^2 \theta}{2} + C_3$$
+
+
+所以：
+$$I_2 = \left( -\ln |\cos \theta| \right) - \left( \frac{\sin^2 \theta}{2} \right) + C_4 = -\ln |\cos \theta| - \frac{\sin^2 \theta}{2} + C_4$$
+其中 $C_4$ 为积分常数。
+$$\boxed{\int \frac{\sin^{3}\theta}{\cos\theta}  d\theta = -\ln \left| \cos\theta \right| - \frac{\sin^{2}\theta}{2} + C_{4}}$$
+步骤4: 组合结果并代回原变量
+代回积分：
+$$\frac{1}{d} \left[ a \cdot I_1 + b \cdot I_2 \right] = \frac{1}{d} \left[ a \left( \frac{1}{2} \theta - \frac{1}{2} \sin \theta \cos \theta \right) + b \left( -\ln |\cos \theta| - \frac{\sin^2 \theta}{2} \right) \right] + C$$
+其中 $C$ 为积分常数，合并了所有常数项。
+展开：
+$$= \frac{1}{d} \left[ \frac{a}{2} \theta - \frac{a}{2} \sin \theta \cos \theta - b \ln |\cos \theta| - \frac{b}{2} \sin^2 \theta \right] + C$$
+代回 $\theta = c + d x$：
+$$= \frac{1}{d} \left[ \frac{a}{2} (c + d x) - \frac{a}{2} \sin(c + d x) \cos(c + d x) - b \ln |\cos(c + d x)| - \frac{b}{2} \sin^2(c + d x) \right] + C$$
+简化三角项：
+
+$\sin(c + d x) \cos(c + d x) = \frac{1}{2} \sin 2(c + d x)$
+$\sin^2(c + d x) = \frac{1 - \cos 2(c + d x)}{2}$
+代入：
+
+$$= \frac{1}{d} \left[ \frac{a}{2} (c + d x) - \frac{a}{2} \cdot \frac{1}{2} \sin 2(c + d x) - b \ln |\cos(c + d x)| - \frac{b}{2} \cdot \frac{1 - \cos 2(c + d x)}{2} \right] + C$$
+$$= \frac{1}{d} \left[ \frac{a}{2} (c + d x) - \frac{a}{4} \sin 2(c + d x) - b \ln |\cos(c + d x)| - \frac{b}{4} (1 - \cos 2(c + d x)) \right] + C$$
+展开：
+$$= \frac{1}{d} \left[ \frac{a}{2} (c + d x) - \frac{a}{4} \sin 2(c + d x) - b \ln |\cos(c + d x)| - \frac{b}{4} + \frac{b}{4} \cos 2(c + d x) \right] + C$$
+常数项 $-\frac{b}{4d}$ 可吸收到积分常数 $C$ 中：
+$$= \frac{a}{2d} (c + d x) - \frac{a}{4d} \sin 2(c + d x) + \frac{b}{4d} \cos 2(c + d x) - \frac{b}{d} \ln |\cos(c + d x)| + C$$
+其中 $C$ 为新的积分常数。
+最终解答
+不定积分的精确解为：
+$$\boxed{\int \sin^{2}(c + d x) (a + b \tan(c + d x))  dx = \frac{a}{2d} (c + d x) - \frac{a}{4d} \sin 2(c + d x) + \frac{b}{4d} \cos 2(c + d x) - \frac{b}{d} \ln \left| \cos(c + d x) \right| + C}$$
+其中 $C$ 为积分常数。
+其他方法说明
+
+替代方法：令 $u = \tan(c + d x)$，则 $du = d \sec^2(c + d x)  dx = d (1 + u^2)  dx$，即 $dx = \frac{du}{d (1 + u^2)}$。被积函数化为 $\sin^2 \theta = \frac{u^2}{1 + u^2}$，积分变为 $\frac{1}{d} \int \frac{u^2 (a + b u)}{(1 + u^2)^2}  du$。通过部分分式分解可求解，结果与上述一致，但过程更复杂，故未采用。
+选择的主要方法（代换 $\theta = c + d x$ 并分步积分）更直接且清晰。
