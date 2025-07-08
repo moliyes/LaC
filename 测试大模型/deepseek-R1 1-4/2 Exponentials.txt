@@ -1,0 +1,17 @@
+1. x^2 \log ^n(d x) F^{c (a+b x)} (e \log (d x) (b c x \log (F)+2+1)+e n+e)
+e x^3 \log ^{n+1}(d x) F^{c (a+b x)}
+
+2. \frac{\sqrt{e^{a+b x}}}{x^2}
+\frac{b \sqrt{e^{a+b x}} \text{Ei}\left(\frac{b x}{2}\right)}{2 e^{\frac{b x}{2}}}-\frac{\sqrt{e^{a+b x}}}{x}
+
+3. \frac{F^{a+b x}}{x^{3/2}}
+2 \sqrt{\pi } \sqrt{b} F^a \sqrt{\log (F)} \text{erfi}\left(\sqrt{b} \sqrt{x} \sqrt{\log (F)}\right)-\frac{2 F^{a+b x}}{\sqrt{x}}
+
+4. \sqrt{d+e x} F^{c (a+b x)}
+\frac{\sqrt{d+e x} F^{c (a+b x)}}{b c \log (F)}-\frac{\sqrt{\pi } \sqrt{e} F^{c \left(a-\frac{b d}{e}\right)} \text{erfi}\left(\frac{\sqrt{b} \sqrt{c} \sqrt{\log (F)} \sqrt{d+e x}}{\sqrt{e}}\right)}{2 b^{3/2} c^{3/2} \log ^{\frac{3}{2}}(F)}
+
+5. \frac{F^{c+d x}}{x^1 \left(a+b F^{c+d x}\right)}
+不可积分
+
+6. \frac{e^{d+e x}}{x^2 \left(a+b x+c x^2\right)}
+\frac{\left(\frac{b^2-2 a c}{\sqrt{b^2-4 a c}}+b\right) e^{d-\frac{e \left(b-\sqrt{b^2-4 a c}\right)}{2 c}} \text{Ei}\left(\frac{e \left(b+2 c x-\sqrt{b^2-4 a c}\right)}{2 c}\right)}{2 a^2}+\frac{\left(b-\frac{b^2-2 a c}{\sqrt{b^2-4 a c}}\right) e^{d-\frac{e \left(\sqrt{b^2-4 a c}+b\right)}{2 c}} \text{Ei}\left(\frac{e \left(b+2 c x+\sqrt{b^2-4 a c}\right)}{2 c}\right)}{2 a^2}-\frac{b e^d \text{Ei}(e x)}{a^2}+\frac{e^d e \text{Ei}(e x)}{a}-\frac{e^{d+e x}}{a x}

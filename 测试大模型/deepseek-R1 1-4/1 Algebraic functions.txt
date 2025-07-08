@@ -1,0 +1,29 @@
+1. \frac{1}{\sqrt{x} \sqrt{a x+b x^3+c x^5}}
+-\frac{\tanh ^{-1}\left(\frac{\sqrt{x} \left(2 a+b x^2\right)}{2 \sqrt{a} \sqrt{a x+b x^3+c x^5}}\right)}{2 \sqrt{a}}
+
+2. \frac{\sqrt{a^2+2 a b x+b^2 x^2}}{(d+e x)^6}
+\frac{\sqrt{a^2+2 a b x+b^2 x^2} (b d-a e)}{5 e^2 (a+b x) (d+e x)^5}-\frac{b \sqrt{a^2+2 a b x+b^2 x^2}}{4 e^2 (a+b x) (d+e x)^4}
+
+3. \frac{(e x)^m \left(a+b x^n\right)^0 \left(A+B x^n\right)}{c+d x^n}
+\frac{B (e x)^{m+1}}{d e (m+1)}-\frac{(e x)^{m+1} (B c-A d) \, _2F_1\left(1,\frac{m+1}{n};\frac{m+n+1}{n};-\frac{d x^n}{c}\right)}{c d e (m+1)}
+
+4. \frac{\sqrt{c+d x} (e+f x)}{x (a+b x)^1}
+\frac{2 \sqrt{b c-a d} (b e-a f) \tanh ^{-1}\left(\frac{\sqrt{b} \sqrt{c+d x}}{\sqrt{b c-a d}}\right)}{a b^{3/2}}-\frac{2 \sqrt{c} e \tanh ^{-1}\left(\frac{\sqrt{c+d x}}{\sqrt{c}}\right)}{a}+\frac{2 f \sqrt{c+d x}}{b}
+
+5. \frac{x^1 \left(A+B x+C x^2+D x^3\right)}{\left(a+b x^2\right)^3}
+\frac{(3 a D+b B) \tan ^{-1}\left(\frac{\sqrt{b} x}{\sqrt{a}}\right)}{8 a^{3/2} b^{5/2}}-\frac{2 (a C+A b)-x (b B-5 a D)}{8 a b^2 \left(a+b x^2\right)}-\frac{x \left(a \left(B-\frac{a D}{b}\right)-x (A b-a C)\right)}{4 a b \left(a+b x^2\right)^2}
+
+6. \frac{1}{\sqrt{8 x^4-x^3+8 x+8}}
+-\frac{x^2 \sqrt{\frac{\left(\frac{4}{x}+1\right)^4-6 \left(\frac{4}{x}+1\right)^2+261}{\left(\frac{\sqrt{29} (x+4)^2}{x^2}+87\right)^2}} \left(\frac{\sqrt{29} (x+4)^2}{x^2}+87\right) F\left(2 \tan ^{-1}\left(\frac{x+4}{\sqrt{3} \sqrt[4]{29} x}\right)|\frac{1}{58} \left(\sqrt{29}+29\right)\right)}{8 \sqrt{3} \sqrt[4]{29} \sqrt{8 x^4-x^3+8 x+8}}
+
+7. \frac{\sqrt{12 x^2+17 x+6}}{(3 x+2)^3 \left(-12 x^2+31 x+30\right)^3}
+-\frac{388 x+275}{294 (10-3 x)^2 \left(12 x^2+17 x+6\right)^{3/2}}-\frac{1634466587 \sqrt{12 x^2+17 x+6}}{7589772288 (10-3 x)}-\frac{50555899 \sqrt{12 x^2+17 x+6}}{19361664 (10-3 x)^2}+\frac{1042556 x+738029}{8232 (10-3 x)^2 \sqrt{12 x^2+17 x+6}}+\frac{40325 \tanh ^{-1}\left(\frac{291 x+206}{84 \sqrt{12 x^2+17 x+6}}\right)}{637540872192}
+
+8. \frac{\sqrt{c+d x} \left(A+B x+C x^2\right)}{(a+b x)^{3/2} \sqrt{e+f x}}
+\frac{2 \sqrt{a+b x} \sqrt{c+d x} \sqrt{e+f x} \left(4 a^2 C d f-a b (3 B d f+c C f+C d e)+b^2 (3 A d f+c C e)\right)}{3 b^2 f (b c-a d) (b e-a f)}+\frac{2 \sqrt{e+f x} \sqrt{a d-b c} \sqrt{\frac{b (c+d x)}{b c-a d}} \left(8 a^2 C d f^2-a b f (6 B d f+c C f+3 C d e)+b^2 (3 d f (A f+B e)-C e (2 d e-c f))\right) E\left(\sin ^{-1}\left(\frac{\sqrt{d} \sqrt{a+b x}}{\sqrt{a d-b c}}\right)|\frac{(b c-a d) f}{d (b e-a f)}\right)}{3 b^3 \sqrt{d} f^2 \sqrt{c+d x} (b e-a f) \sqrt{\frac{b (e+f x)}{b e-a f}}}-\frac{2 (c+d x)^{3/2} \sqrt{e+f x} \left(A b^2-a (b B-a C)\right)}{b \sqrt{a+b x} (b c-a d) (b e-a f)}+\frac{2 \sqrt{a d-b c} (d e-c f) \sqrt{\frac{b (c+d x)}{b c-a d}} \sqrt{\frac{b (e+f x)}{b e-a f}} (4 a C f-3 b B f+2 b C e) F\left(\sin ^{-1}\left(\frac{\sqrt{d} \sqrt{a+b x}}{\sqrt{a d-b c}}\right)|\frac{(b c-a d) f}{d (b e-a f)}\right)}{3 b^3 \sqrt{d} f^2 \sqrt{c+d x} \sqrt{e+f x}}
+
+9. \frac{x^4 \left(d+e x^2+f x^4+g x^6\right)}{\left(a+b x^2+c x^4\right)^2}
+\frac{x \left(a \left(-c^2 (2 a f+b e)+b c (3 a g+b f)+b^3 (-g)+2 c^3 d\right)+x^2 \left(-b^2 c (c e-4 a g)+b c^2 (c d-3 a f)+2 a c^2 (c e-a g)+b^4 (-g)+b^3 c f\right)\right)}{2 c^3 \left(b^2-4 a c\right) \left(a+b x^2+c x^4\right)}-\frac{\tan ^{-1}\left(\frac{\sqrt{2} \sqrt{c} x}{\sqrt{b-\sqrt{b^2-4 a c}}}\right) \left(-b^2 c (c e-24 a g)-\frac{-b^3 c (c e-34 a g)-b^2 c^2 (19 a f+c d)+4 a b c^2 (2 c e-13 a g)-4 a c^3 (c d-5 a f)-5 b^5 g+3 b^4 c f}{\sqrt{b^2-4 a c}}-b c^2 (13 a f+c d)+2 a c^2 (3 c e-7 a g)-5 b^4 g+3 b^3 c f\right)}{2 \sqrt{2} c^{7/2} \left(b^2-4 a c\right) \sqrt{b-\sqrt{b^2-4 a c}}}-\frac{\tan ^{-1}\left(\frac{\sqrt{2} \sqrt{c} x}{\sqrt{\sqrt{b^2-4 a c}+b}}\right) \left(-b^2 c (c e-24 a g)+\frac{-b^3 c (c e-34 a g)-b^2 c^2 (19 a f+c d)+4 a b c^2 (2 c e-13 a g)-4 a c^3 (c d-5 a f)-5 b^5 g+3 b^4 c f}{\sqrt{b^2-4 a c}}-b c^2 (13 a f+c d)+2 a c^2 (3 c e-7 a g)-5 b^4 g+3 b^3 c f\right)}{2 \sqrt{2} c^{7/2} \left(b^2-4 a c\right) \sqrt{\sqrt{b^2-4 a c}+b}}+\frac{x (c f-2 b g)}{c^3}+\frac{g x^3}{3 c^2}
+
+10. \left(a-b x^2\right)^{2/3} \left(3 a+b x^2\right)^3
+\frac{24192 \sqrt{2} 3^{3/4} a^{13/3} \left(\sqrt[3]{a}-\sqrt[3]{a-b x^2}\right) \sqrt{\frac{a^{2/3}+\sqrt[3]{a} \sqrt[3]{a-b x^2}+\left(a-b x^2\right)^{2/3}}{\left(\left(1-\sqrt{3}\right) \sqrt[3]{a}-\sqrt[3]{a-b x^2}\right)^2}} F\left(\sin ^{-1}\left(\frac{\left(\sqrt{3}+1\right) \sqrt[3]{a}-\sqrt[3]{a-b x^2}}{\left(1-\sqrt{3}\right) \sqrt[3]{a}-\sqrt[3]{a-b x^2}}\right)|4 \sqrt{3}-7\right)}{1235 b x \sqrt{-\frac{\sqrt[3]{a} \left(\sqrt[3]{a}-\sqrt[3]{a-b x^2}\right)}{\left(\left(1-\sqrt{3}\right) \sqrt[3]{a}-\sqrt[3]{a-b x^2}\right)^2}}}-\frac{36288 \sqrt[4]{3} \sqrt{\sqrt{3}+2} a^{13/3} \left(\sqrt[3]{a}-\sqrt[3]{a-b x^2}\right) \sqrt{\frac{a^{2/3}+\sqrt[3]{a} \sqrt[3]{a-b x^2}+\left(a-b x^2\right)^{2/3}}{\left(\left(1-\sqrt{3}\right) \sqrt[3]{a}-\sqrt[3]{a-b x^2}\right)^2}} E\left(\sin ^{-1}\left(\frac{\left(\sqrt{3}+1\right) \sqrt[3]{a}-\sqrt[3]{a-b x^2}}{\left(1-\sqrt{3}\right) \sqrt[3]{a}-\sqrt[3]{a-b x^2}}\right)|4 \sqrt{3}-7\right)}{1235 b x \sqrt{-\frac{\sqrt[3]{a} \left(\sqrt[3]{a}-\sqrt[3]{a-b x^2}\right)}{\left(\left(1-\sqrt{3}\right) \sqrt[3]{a}-\sqrt[3]{a-b x^2}\right)^2}}}-\frac{72576 a^4 x}{1235 \left(\left(1-\sqrt{3}\right) \sqrt[3]{a}-\sqrt[3]{a-b x^2}\right)}+\frac{18144 a^3 x \left(a-b x^2\right)^{2/3}}{1235}-\frac{23544 a^2 x \left(a-b x^2\right)^{5/3}}{6175}-\frac{1}{25} 3 x \left(3 a+b x^2\right)^2 \left(a-b x^2\right)^{5/3}-\frac{378}{475} a x \left(3 a+b x^2\right) \left(a-b x^2\right)^{5/3}

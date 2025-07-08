@@ -1,0 +1,44 @@
+1. \cos ^2(c+d x) \left(B \sec (c+d x)+C \sec ^2(c+d x)\right)
+\frac{B \sin (c+d x)}{d}+C x
+
+2. \frac{\sec ^2(x)}{a+b \cot (x)}
+-\frac{b \log (\tan (x))}{a^2}-\frac{b \log (a+b \cot (x))}{a^2}+\frac{\tan (x)}{a}
+
+3. \sin ^2(c+d x) (a+b \tan (c+d x))
+-\frac{\sin (c+d x) \cos (c+d x) (a+b \tan (c+d x))}{2 d}+\frac{a x}{2}-\frac{b \log (\cos (c+d x))}{d}
+
+4. \frac{\sin ^2\left(a+b x+c x^2\right)}{x}
+不可积分
+
+5. \frac{\sec ^2(e+f x) (a \cos (e+f x)+a)^2}{c \cos (e+f x)-c}
+-\frac{a^2 \tan (e+f x)}{c f}-\frac{3 a^2 \tanh ^{-1}(\sin (e+f x))}{c f}+\frac{4 a^2 \sin (e+f x)}{c f (1-\cos (e+f x))}
+
+6. \frac{\sec ^2(e+f x)}{\sqrt[3]{b \sin (e+f x)}}
+\frac{3 \sqrt{\cos ^2(e+f x)} \sec (e+f x) (b \sin (e+f x))^{2/3} \, _2F_1\left(\frac{1}{3},\frac{3}{2};\frac{4}{3};\sin ^2(e+f x)\right)}{2 b f}
+
+7. \frac{\sin ^2(x) \cos (x)}{a \cos (x)+b \sin (x)}
+\frac{a x}{2 \left(a^2+b^2\right)}-\frac{a b^2 x}{\left(a^2+b^2\right)^2}+\frac{b \sin ^2(x)}{2 \left(a^2+b^2\right)}-\frac{a \sin (x) \cos (x)}{2 \left(a^2+b^2\right)}+\frac{a^2 b \log (a \cos (x)+b \sin (x))}{\left(a^2+b^2\right)^2}
+
+8. (a+b \sin (c+d x))^{2/3}
+-\frac{\sqrt{2} \cos (c+d x) (a+b \sin (c+d x))^{2/3} F_1\left(\frac{1}{2};\frac{1}{2},-\frac{2}{3};\frac{3}{2};\frac{1}{2} (1-\sin (c+d x)),\frac{b (1-\sin (c+d x))}{a+b}\right)}{d \sqrt{\sin (c+d x)+1} \left(\frac{a+b \sin (c+d x)}{a+b}\right)^{2/3}}
+
+9. \frac{1}{x^{5/2} \left(a+b \csc \left(c+d \sqrt{x}\right)\right)^2}
+不可积分
+
+10. \frac{1}{(a \csc (x)+a)^{5/2}}
+\frac{43 \tan ^{-1}\left(\frac{\sqrt{a} \cot (x)}{\sqrt{2} \sqrt{a \csc (x)+a}}\right)}{16 \sqrt{2} a^{5/2}}-\frac{2 \tan ^{-1}\left(\frac{\sqrt{a} \cot (x)}{\sqrt{a \csc (x)+a}}\right)}{a^{5/2}}+\frac{11 \cot (x)}{16 a (a \csc (x)+a)^{3/2}}+\frac{\cot (x)}{4 (a \csc (x)+a)^{5/2}}
+
+11. \frac{A+B \cos (d+e x)+C \sin (d+e x)}{(a+b \cos (d+e x))^3}
+\frac{\left(2 a^2 A-3 a b B+A b^2\right) \tan ^{-1}\left(\frac{\sqrt{a-b} \tan \left(\frac{1}{2} (d+e x)\right)}{\sqrt{a+b}}\right)}{e (a-b)^{5/2} (a+b)^{5/2}}-\frac{\left(a^2 (-B)+3 a A b-2 b^2 B\right) \sin (d+e x)}{2 e \left(a^2-b^2\right)^2 (a+b \cos (d+e x))}-\frac{(A b-a B) \sin (d+e x)}{2 e \left(a^2-b^2\right) (a+b \cos (d+e x))^2}+\frac{C}{2 b e (a+b \cos (d+e x))^2}
+
+12. e^{a+b x} \sin ^3(c+d x) \cos ^2(c+d x)
+\frac{b e^{a+b x} \sin (c+d x)}{8 \left(b^2+d^2\right)}+\frac{b e^{a+b x} \sin (3 c+3 d x)}{16 \left(b^2+9 d^2\right)}-\frac{b e^{a+b x} \sin (5 c+5 d x)}{16 \left(b^2+25 d^2\right)}+\frac{5 d e^{a+b x} \cos (5 c+5 d x)}{16 \left(b^2+25 d^2\right)}-\frac{d e^{a+b x} \cos (c+d x)}{8 \left(b^2+d^2\right)}-\frac{3 d e^{a+b x} \cos (3 c+3 d x)}{16 \left(b^2+9 d^2\right)}
+
+13. \sec ^9(c+d x) (a \cos (c+d x)+b \sin (c+d x))^4
+\frac{3 a^4 \tanh ^{-1}(\sin (c+d x))}{8 d}+\frac{a^4 \tan (c+d x) \sec ^3(c+d x)}{4 d}+\frac{3 a^4 \tan (c+d x) \sec (c+d x)}{8 d}+\frac{4 a^3 b \sec ^5(c+d x)}{5 d}-\frac{3 a^2 b^2 \tanh ^{-1}(\sin (c+d x))}{8 d}+\frac{a^2 b^2 \tan (c+d x) \sec ^5(c+d x)}{d}-\frac{a^2 b^2 \tan (c+d x) \sec ^3(c+d x)}{4 d}-\frac{3 a^2 b^2 \tan (c+d x) \sec (c+d x)}{8 d}+\frac{4 a b^3 \sec ^7(c+d x)}{7 d}-\frac{4 a b^3 \sec ^5(c+d x)}{5 d}+\frac{3 b^4 \tanh ^{-1}(\sin (c+d x))}{128 d}+\frac{b^4 \tan ^3(c+d x) \sec ^5(c+d x)}{8 d}-\frac{b^4 \tan (c+d x) \sec ^5(c+d x)}{16 d}+\frac{b^4 \tan (c+d x) \sec ^3(c+d x)}{64 d}+\frac{3 b^4 \tan (c+d x) \sec (c+d x)}{128 d}
+
+14. x^2 \cos \left(a+b \sqrt{c+d x}\right)
+\frac{240 \cos \left(a+b \sqrt{c+d x}\right)}{b^6 d^3}+\frac{240 \sqrt{c+d x} \sin \left(a+b \sqrt{c+d x}\right)}{b^5 d^3}+\frac{24 c \cos \left(a+b \sqrt{c+d x}\right)}{b^4 d^3}-\frac{120 (c+d x) \cos \left(a+b \sqrt{c+d x}\right)}{b^4 d^3}+\frac{24 c \sqrt{c+d x} \sin \left(a+b \sqrt{c+d x}\right)}{b^3 d^3}-\frac{40 (c+d x)^{3/2} \sin \left(a+b \sqrt{c+d x}\right)}{b^3 d^3}+\frac{2 c^2 \cos \left(a+b \sqrt{c+d x}\right)}{b^2 d^3}+\frac{10 (c+d x)^2 \cos \left(a+b \sqrt{c+d x}\right)}{b^2 d^3}-\frac{12 c (c+d x) \cos \left(a+b \sqrt{c+d x}\right)}{b^2 d^3}+\frac{2 c^2 \sqrt{c+d x} \sin \left(a+b \sqrt{c+d x}\right)}{b d^3}+\frac{2 (c+d x)^{5/2} \sin \left(a+b \sqrt{c+d x}\right)}{b d^3}-\frac{4 c (c+d x)^{3/2} \sin \left(a+b \sqrt{c+d x}\right)}{b d^3}
+
+15. \frac{\tan ^2(d+e x)}{\left(a+b \tan (d+e x)+c \tan ^2(d+e x)\right)^{3/2}}
+\frac{\sqrt{-\sqrt{a^2-2 a c+b^2+c^2}+2 a-2 c} \sqrt{(a-c) \sqrt{a^2-2 a c+b^2+c^2}+a^2-2 a c-b^2+c^2} \tan ^{-1}\left(\frac{\left(b^2-(a-c) \left(\sqrt{a^2-2 a c+b^2+c^2}+a-c\right)\right) \tan (d+e x)+b \left(-\sqrt{a^2-2 a c+b^2+c^2}+2 a-2 c\right)}{\sqrt{2} \sqrt{-\sqrt{a^2-2 a c+b^2+c^2}+2 a-2 c} \sqrt{(a-c) \sqrt{a^2-2 a c+b^2+c^2}+a^2-2 a c-b^2+c^2} \sqrt{a+b \tan (d+e x)+c \tan ^2(d+e x)}}\right)}{\sqrt{2} e \left(a^2-2 a c+b^2+c^2\right)^{3/2}}-\frac{\sqrt{\sqrt{a^2-2 a c+b^2+c^2}+2 a-2 c} \sqrt{-(a-c) \sqrt{a^2-2 a c+b^2+c^2}+a^2-2 a c-b^2+c^2} \tan ^{-1}\left(\frac{\left(b^2-(a-c) \left(-\sqrt{a^2-2 a c+b^2+c^2}+a-c\right)\right) \tan (d+e x)+b \left(\sqrt{a^2-2 a c+b^2+c^2}+2 a-2 c\right)}{\sqrt{2} \sqrt{\sqrt{a^2-2 a c+b^2+c^2}+2 a-2 c} \sqrt{-(a-c) \sqrt{a^2-2 a c+b^2+c^2}+a^2-2 a c-b^2+c^2} \sqrt{a+b \tan (d+e x)+c \tan ^2(d+e x)}}\right)}{\sqrt{2} e \left(a^2-2 a c+b^2+c^2\right)^{3/2}}-\frac{2 \left(c \left(2 a^2-2 a c+b^2\right) \tan (d+e x)+a b (a+c)\right)}{e \left((a-c)^2+b^2\right) \left(b^2-4 a c\right) \sqrt{a+b \tan (d+e x)+c \tan ^2(d+e x)}}

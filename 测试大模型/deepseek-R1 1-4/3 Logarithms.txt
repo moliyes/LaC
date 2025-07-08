@@ -1,0 +1,35 @@
+1. \frac{x^2}{\log ^2(c x)}
+\frac{3 \text{Ei}(3 \log (c x))}{c^3}-\frac{x^3}{\log (c x)}
+
+2. \frac{\log (x)}{x \sqrt{4 \log (x)-1}}
+\frac{1}{24} (4 \log (x)-1)^{3/2}+\frac{1}{8} \sqrt{4 \log (x)-1}
+
+3. \frac{a x^2+2 b n x^1 \log \left(c x^n\right)}{\left(a x^2+b x \log ^2\left(c x^n\right)\right)^2}
+-\frac{1}{a x+b \log ^2\left(c x^n\right)}
+
+4. \frac{1}{((a+b x) (c+d x)) \left(B \log \left(\frac{e (a+b x)^n}{(c+d x)^n}\right)+A\right)}
+\frac{\log \left(B \log \left(\frac{e (a+b x)^n}{(c+d x)^n}\right)+A\right)}{B n (b c-a d)}
+
+5. \frac{\log ^{q-1}\left(c x^n\right)}{x \left(a x^m+b \log ^q\left(c x^n\right)\right)^1}
+不可积分
+
+6. \frac{x^1}{\log ^{\frac{3}{2}}\left(a x^n\right)}
+\frac{2 \sqrt{2 \pi } x^2 \text{erfi}\left(\frac{\sqrt{2} \sqrt{\log \left(a x^n\right)}}{\sqrt{n}}\right)}{n^{3/2} \left(a x^n\right)^{2/n}}-\frac{2 x^2}{n \sqrt{\log \left(a x^n\right)}}
+
+7. \frac{\log \left(\frac{a d-b c}{d (a+b x)}\right) \log \left(\frac{e (c+d x)}{a+b x}\right)}{(a+b x) (c+d x)}
+\frac{\text{Li}_2\left(\frac{b c-a d}{d (a+b x)}+1\right) \log \left(\frac{e (c+d x)}{a+b x}\right)}{b c-a d}-\frac{\text{Li}_3\left(\frac{b c-a d}{d (a+b x)}+1\right)}{b c-a d}
+
+8. \frac{(a g+b g x)^m}{(c i+d i x)^{m+2} \left(B \log \left(e \left(\frac{a+b x}{c+d x}\right)^n\right)+A\right)^1}
+\frac{(a+b x) (g (a+b x))^m \text{Ei}\left(\frac{(m+1) \left(A+B \log \left(e \left(\frac{a+b x}{c+d x}\right)^n\right)\right)}{B n}\right)}{e^{\frac{A (m+1)}{B n}} (i (c+d x))^m \left(B i^2 n (c+d x) (b c-a d)\right) \left(e \left(\frac{a+b x}{c+d x}\right)^n\right)^{\frac{m+1}{n}}}
+
+9. \frac{B \log \left(e \left(\frac{a+b x}{c+d x}\right)^n\right)+A}{(a g+b g x)^4}
+-\frac{B \log \left(e \left(\frac{a+b x}{c+d x}\right)^n\right)+A}{3 b g^4 (a+b x)^3}+\frac{B d^3 n \log (c+d x)}{3 b g^4 (b c-a d)^3}-\frac{B d^3 n \log (a+b x)}{3 b g^4 (b c-a d)^3}-\frac{B d^2 n}{3 b g^4 (a+b x) (b c-a d)^2}+\frac{B d n}{6 b g^4 (a+b x)^2 (b c-a d)}-\frac{B n}{9 b g^4 (a+b x)^3}
+
+10. \frac{\log \left(d \left(a+b x+c x^2\right)^n\right)}{(d+e x)^3}
+\frac{n \left(-2 c e (a e+b d)+b^2 e^2+2 c^2 d^2\right) \log \left(a+b x+c x^2\right)}{4 e \left(a e^2-b d e+c d^2\right)^2}-\frac{n \log (d+e x) \left(-2 c e (a e+b d)+b^2 e^2+2 c^2 d^2\right)}{2 e \left(a e^2-b d e+c d^2\right)^2}+\frac{n \sqrt{b^2-4 a c} (2 c d-b e) \tanh ^{-1}\left(\frac{b+2 c x}{\sqrt{b^2-4 a c}}\right)}{2 \left(a e^2-b d e+c d^2\right)^2}+\frac{n (2 c d-b e)}{2 e (d+e x) \left(a e^2-b d e+c d^2\right)}-\frac{\log \left(d \left(a+b x+c x^2\right)^n\right)}{2 e (d+e x)^2}
+
+11. (d+e x)^2 \sqrt{a+b \log \left(c x^n\right)}
+-\frac{\sqrt{\pi } \sqrt{b} d^2 \sqrt{n} x \text{erfi}\left(\frac{\sqrt{a+b \log \left(c x^n\right)}}{\sqrt{b} \sqrt{n}}\right)}{2 \left(e^{\frac{a}{b n}} \left(c x^n\right)^{\frac{1}{n}}\right)}+d^2 x \sqrt{a+b \log \left(c x^n\right)}-\frac{\sqrt{\frac{\pi }{2}} \sqrt{b} d e \sqrt{n} x^2 \text{erfi}\left(\frac{\sqrt{2} \sqrt{a+b \log \left(c x^n\right)}}{\sqrt{b} \sqrt{n}}\right)}{2 \left(e^{\frac{2 a}{b n}} \left(c x^n\right)^{2/n}\right)}+d e x^2 \sqrt{a+b \log \left(c x^n\right)}-\frac{\sqrt{\frac{\pi }{3}} \sqrt{b} e^2 \sqrt{n} x^3 \text{erfi}\left(\frac{\sqrt{3} \sqrt{a+b \log \left(c x^n\right)}}{\sqrt{b} \sqrt{n}}\right)}{6 \left(e^{\frac{3 a}{b n}} \left(c x^n\right)^{3/n}\right)}+\frac{1}{3} e^2 x^3 \sqrt{a+b \log \left(c x^n\right)}
+
+12. \frac{x^1 \log \left(e \left(\frac{a+b x}{c+d x}\right)^n\right)}{f+g x+h x^2}
+-\frac{g \tanh ^{-1}\left(\frac{g+2 h x}{\sqrt{g^2-4 f h}}\right) \left(-\log \left(e \left(\frac{a+b x}{c+d x}\right)^n\right)+n \log (a+b x)-n \log (c+d x)\right)}{h \sqrt{g^2-4 f h}}-\frac{\log \left(f+g x+h x^2\right) \left(-\log \left(e \left(\frac{a+b x}{c+d x}\right)^n\right)+n \log (a+b x)-n \log (c+d x)\right)}{2 h}+\frac{n \left(1-\frac{g}{\sqrt{g^2-4 f h}}\right) \text{Li}_2\left(\frac{2 h (a+b x)}{2 a h-b \left(g-\sqrt{g^2-4 f h}\right)}\right)}{2 h}+\frac{n \left(\frac{g}{\sqrt{g^2-4 f h}}+1\right) \text{Li}_2\left(\frac{2 h (a+b x)}{2 a h-b \left(g+\sqrt{g^2-4 f h}\right)}\right)}{2 h}+\frac{n \left(1-\frac{g}{\sqrt{g^2-4 f h}}\right) \log (a+b x) \log \left(-\frac{b \left(-\sqrt{g^2-4 f h}+g+2 h x\right)}{2 a h-b \left(g-\sqrt{g^2-4 f h}\right)}\right)}{2 h}+\frac{n \left(\frac{g}{\sqrt{g^2-4 f h}}+1\right) \log (a+b x) \log \left(-\frac{b \left(\sqrt{g^2-4 f h}+g+2 h x\right)}{2 a h-b \left(\sqrt{g^2-4 f h}+g\right)}\right)}{2 h}-\frac{n \left(1-\frac{g}{\sqrt{g^2-4 f h}}\right) \text{Li}_2\left(\frac{2 h (c+d x)}{2 c h-d \left(g-\sqrt{g^2-4 f h}\right)}\right)}{2 h}-\frac{n \left(\frac{g}{\sqrt{g^2-4 f h}}+1\right) \text{Li}_2\left(\frac{2 h (c+d x)}{2 c h-d \left(g+\sqrt{g^2-4 f h}\right)}\right)}{2 h}-\frac{n \left(1-\frac{g}{\sqrt{g^2-4 f h}}\right) \log (c+d x) \log \left(-\frac{d \left(-\sqrt{g^2-4 f h}+g+2 h x\right)}{2 c h-d \left(g-\sqrt{g^2-4 f h}\right)}\right)}{2 h}-\frac{n \left(\frac{g}{\sqrt{g^2-4 f h}}+1\right) \log (c+d x) \log \left(-\frac{d \left(\sqrt{g^2-4 f h}+g+2 h x\right)}{2 c h-d \left(\sqrt{g^2-4 f h}+g\right)}\right)}{2 h}
