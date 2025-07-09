@@ -1,0 +1,22 @@
+{
+  "summary": {
+    "total": 1,
+    "correct": 0,
+    "incorrect": 1,
+    "conversion_failed": 0
+  },
+  "details": [
+    {
+      "id": "problem_1",
+      "input": {
+        "latex": "\\frac{\\log \\left(\\left| \\tan \\left(\\frac{x}{2}+\\frac{\\pi }{8}\\right)\\right| \\right)}{\\sqrt{2}}",
+        "mathematica": "Times[Power[2, Rational[-1, 2]], Log[Abs[Tan[Plus[Times[Rational[1, 8], Pi], Times[Rational[1, 2], Global`x]]]]]]"
+      },
+      "reference": {
+        "latex": "\\frac{\\tanh ^{-1}\\left(\\frac{\\cos (x)-\\sin (x)}{\\sqrt{2}}\\right)}{\\sqrt{2}}",
+        "mathematica": "Times[Power[2, Rational[-1, 2]], ArcTanh[Times[Power[2, Rational[-1, 2]], Plus[Cos[Global`x], Times[-1, Sin[Global`x]]]]]]"
+      },
+      "result": "incorrect"
+    }
+  ]
+}

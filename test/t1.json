@@ -1,0 +1,13 @@
+[
+  {
+    "id": "problem_1",
+    "input": {
+      "latex": "\\frac{\\log \\left(\\tan \\left(\\frac{x}{2}+\\frac{\\pi }{8}\\right)\\right)}{\\sqrt{2}}",
+      "mathematica": null
+    },
+    "reference": {
+      "latex": "\\frac{\\tanh ^{-1}\\left(\\frac{\\cos (x)-\\sin (x)}{\\sqrt{2}}\\right)}{\\sqrt{2}}",
+      "mathematica": null
+    }
+  }
+]
