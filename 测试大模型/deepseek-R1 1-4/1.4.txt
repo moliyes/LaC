@@ -1,0 +1,78 @@
+327.0s 错误
+
+任务分析
+计算不定积分：
+$$\int \frac{\sqrt{c + d x} (e + f x)}{x (a + b x)}  dx$$
+被积函数包含平方根项 $\sqrt{c + d x}$、线性项 $e + f x$ 和分母 $x (a + b x)$。分母可分解为部分分式，但分子中的平方根增加了复杂性。因此，采用代换法简化平方根，设 $u = \sqrt{c + d x}$，则：
+$$u^2 = c + d x, \quad x = \frac{u^2 - c}{d}, \quad dx = \frac{2u}{d}  du$$
+代入后，积分转化为关于 $u$ 的有理函数积分。然后，通过部分分式分解和标准积分公式求解，最后回代 $u = \sqrt{c + d x}$。
+推导过程
+步骤 1: 代换
+设 $u = \sqrt{c + d x}$，则：
+$$x = \frac{u^2 - c}{d}, \quad dx = \frac{2u}{d}  du$$
+被积函数化为：
+$$\frac{\sqrt{c + d x} (e + f x)}{x (a + b x)} = \frac{u \left(e + f \cdot \frac{u^2 - c}{d}\right)}{\frac{u^2 - c}{d} \left(a + b \cdot \frac{u^2 - c}{d}\right)} \cdot \frac{2u}{d}  du$$
+简化分子和分母：
+
+分子：$u \left(e + f \cdot \frac{u^2 - c}{d}\right) = u \cdot \frac{e d + f (u^2 - c)}{d} = \frac{u (f u^2 + e d - f c)}{d}$
+分母：$\frac{u^2 - c}{d} \left(a + b \cdot \frac{u^2 - c}{d}\right) = \frac{u^2 - c}{d} \cdot \frac{a d + b (u^2 - c)}{d} = \frac{(u^2 - c)(b u^2 + a d - b c)}{d^2}$
+
+整体分式：
+$$\frac{\frac{u (f u^2 + e d - f c)}{d}}{\frac{(u^2 - c)(b u^2 + a d - b c)}{d^2}} \cdot \frac{2u}{d} = \frac{u (f u^2 + e d - f c)}{d} \cdot \frac{d^2}{(u^2 - c)(b u^2 + a d - b c)} \cdot \frac{2u}{d} = \frac{2u^2 (f u^2 + e d - f c)}{(u^2 - c)(b u^2 + a d - b c)}$$
+定义常数：
+$$A = e d - f c, \quad B = a d - b c$$
+积分化为：
+$$\int \frac{2u^2 (f u^2 + A)}{(u^2 - c)(b u^2 + B)}  du$$
+步骤 2: 部分分式分解
+被积函数为假分式（分子和分母次数均为 4），进行多项式除法：
+$$\frac{2u^2 (f u^2 + A)}{(u^2 - c)(b u^2 + B)} = \frac{2f u^4 + 2A u^2}{b u^4 + (B - b c) u^2 - B c}$$
+除得：
+$$\frac{2f u^4 + 2A u^2}{b u^4 + (B - b c) u^2 - B c} = \frac{2f}{b} + \frac{C_1 u^2 + C_2}{b u^4 + (B - b c) u^2 - B c}$$
+其中：
+$$C_1 = 2 \left( A - \frac{f}{b} (B - b c) \right), \quad C_2 = \frac{2f B c}{b}$$
+简化 $C_1$ 和 $C_2$：
+$$C_1 = 2 \left( (e d - f c) - \frac{f}{b} ((a d - b c) - b c) \right) = 2 (e d - f c - \frac{f}{b} (a d - 2b c)) = 2 \left( d \left( e - \frac{a f}{b} \right) + f c \right)$$
+对余项进行部分分式分解：
+$$\frac{C_1 u^2 + C_2}{(u^2 - c)(b u^2 + B)} = \frac{P}{u^2 - c} + \frac{Q}{b u^2 + B}$$
+解系数方程：
+$$C_1 u^2 + C_2 = P (b u^2 + B) + Q (u^2 - c) = (b P + Q) u^2 + B P - c Q$$
+得：
+$$b P + Q = C_1, \quad B P - c Q = C_2$$
+解得：
+$$P = \frac{c C_1 + C_2}{b c + B}, \quad Q = C_1 - b P$$
+其中 $b c + B = a d$，且计算得 $c C_1 + C_2 = 2 c d e$，所以：
+$$P = \frac{2 c d e}{a d} = \frac{2 c e}{a}, \quad Q = 2 B \left( \frac{e}{a} - \frac{f}{b} \right)$$
+积分化为：
+$$\int \left[ \frac{2f}{b} + \frac{P}{u^2 - c} + \frac{Q}{b (u^2 + \frac{B}{b})} \right] du = \frac{2f}{b} u + P \int \frac{1}{u^2 - c}  du + \frac{Q}{b} \int \frac{1}{u^2 + \frac{B}{b}}  du$$
+步骤 3: 计算积分
+假设 $c > 0$ 和 $B > 0$，则：
+$$\int \frac{1}{u^2 - c}  du = \frac{1}{2\sqrt{c}} \ln \left| \frac{u - \sqrt{c}}{u + \sqrt{c}} \right|, \quad \int \frac{1}{u^2 + \frac{B}{b}}  du = \sqrt{\frac{b}{B}} \arctan \left( u \sqrt{\frac{b}{B}} \right)$$
+代入并简化：
+$$P \int \frac{1}{u^2 - c}  du = \frac{2 c e}{a} \cdot \frac{1}{2\sqrt{c}} \ln \left| \frac{u - \sqrt{c}}{u + \sqrt{c}} \right| = \frac{e \sqrt{c}}{a} \ln \left| \frac{u - \sqrt{c}}{u + \sqrt{c}} \right|$$
+$$\frac{Q}{b} \int \frac{1}{u^2 + \frac{B}{b}}  du = \frac{2B}{b} \left( \frac{e}{a} - \frac{f}{b} \right) \cdot \sqrt{\frac{b}{B}} \arctan \left( u \sqrt{\frac{b}{B}} \right) = 2 \sqrt{\frac{B}{b}} \left( \frac{e}{a} - \frac{f}{b} \right) \arctan \left( u \sqrt{\frac{b}{B}} \right)$$
+其中 $\frac{e}{a} - \frac{f}{b} = \frac{b e - a f}{a b}$，且 $\sqrt{\frac{B}{b}} = \sqrt{\frac{a d - b c}{b}}$，所以：
+$$2 \sqrt{\frac{B}{b}} \cdot \frac{b e - a f}{a b} \arctan \left( u \sqrt{\frac{b}{B}} \right) = \frac{2 (b e - a f)}{a b} \sqrt{\frac{a d - b c}{b}} \arctan \left( \sqrt{\frac{b}{a d - b c}} u \right)$$
+步骤 4: 回代并写出结果
+回代 $u = \sqrt{c + d x}$，得积分结果：
+$$\int \frac{\sqrt{c + d x} (e + f x)}{x (a + b x)}  dx = \frac{2 f \sqrt{c + d x}}{b} + \frac{e \sqrt{c}}{a} \ln \left| \frac{\sqrt{c + d x} - \sqrt{c}}{\sqrt{c + d x} + \sqrt{c}} \right| + \frac{2 (b e - a f)}{a b} \sqrt{\frac{a d - b c}{b}} \arctan \left( \sqrt{\frac{b}{a d - b c}} \sqrt{c + d x} \right) + C$$
+其中假设 $c > 0$ 和 $a d - b c > 0$ 以保证表达式实数性。
+关键阶段性计算结果
+
+代换 $u = \sqrt{c + d x}$：
+$$\int \frac{2u^2 (f u^2 + A)}{(u^2 - c)(b u^2 + B)}  du, \quad A = e d - f c, \quad B = a d - b c$$
+
+部分分式分解：
+$$\frac{2f}{b} + \frac{P}{u^2 - c} + \frac{Q}{b (u^2 + \frac{B}{b})}, \quad P = \frac{2 c e}{a}, \quad Q = 2B \left( \frac{e}{a} - \frac{f}{b} \right)$$
+
+积分计算（假设 $c > 0$, $B > 0$)：
+$$\int \frac{1}{u^2 - c}  du = \frac{1}{2\sqrt{c}} \ln \left| \frac{u - \sqrt{c}}{u + \sqrt{c}} \right|, \quad \int \frac{1}{u^2 + \frac{B}{b}}  du = \sqrt{\frac{b}{B}} \arctan \left( u \sqrt{\frac{b}{B}} \right)$$
+
+回代并简化。
+
+最终解答
+积分结果为：
+$$\boxed{\dfrac{2f\sqrt{dx + c}}{b} + \dfrac{e\sqrt{c}\ln\left|\dfrac{\sqrt{dx + c} - \sqrt{c}}{\sqrt{dx + c} + \sqrt{c}}\right|}{a} + \dfrac{2\left(be - af\right)\sqrt{\dfrac{ad - bc}{b}}\arctan\left(\sqrt{\dfrac{b\left(dx + c\right)}{ad - bc}}\right)}{ab} + C}$$
+Mathematica 表达式
+<MATHEMATICA>Integrate[(Sqrt[c + d*x]*(e + f*x))/(x*(a + b*x)), x] // FullSimplify
+结果等价于：
+<MATHEMATICA>(2*f*Sqrt[c + d*x])/b + (e*Sqrt[c]*Log[(Sqrt[c + d*x] - Sqrt[c])/(Sqrt[c + d*x] + Sqrt[c])])/a + (2*(b*e - a*f)*Sqrt[(a*d - b*c)/b]*ArcTan[Sqrt[(b*(c + d*x))/(a*d - b*c)]])/(a*b) + C

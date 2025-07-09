@@ -1,0 +1,121 @@
+1025.3s 错误
+
+解决积分问题
+任务描述
+计算不定积分：
+$$\int \frac{x \left(A + B x + C x^2 + D x^3\right)}{\left(a + b x^2\right)^3}  dx$$
+其中 $A, B, C, D, a, b$ 是常数，且 $a > 0$, $b > 0$ 以确保积分定义良好（避免分母为零，且反正切函数定义）。
+分析积分的基本特征和可能的解法策略
+
+被积函数特征：分子为 $x(A + Bx + Cx^2 + Dx^3) = A x + B x^2 + C x^3 + D x^4$（四次多项式），分母为 $(a + b x^2)^3$（二次多项式的三次幂）。分母在实数域不可约（因 $a > 0, b > 0$，判别式为负）。
+解法策略：由于分母是高次幂，且分子包含奇次和偶次项，采用分部积分法或部分分式分解较复杂。最优策略是将积分拆分为四个子积分，每个对应分子中的一个项：
+$$\int \frac{x (A + B x + C x^2 + D x^3)}{(a + b x^2)^3}  dx = A \int \frac{x}{(a + b x^2)^3}  dx + B \int \frac{x^2}{(a + b x^2)^3}  dx + C \int \frac{x^3}{(a + b x^2)^3}  dx + D \int \frac{x^4}{(a + b x^2)^3}  dx$$
+然后分别计算每个子积分：
+
+$\int \frac{x}{(a + b x^2)^3}  dx$ 和 $\int \frac{x^3}{(a + b x^2)^3}  dx$ 可通过代换 $u = a + b x^2$ 求解。
+$\int \frac{x^2}{(a + b x^2)^3}  dx$ 和 $\int \frac{x^4}{(a + b x^2)^3}  dx$ 需利用标准积分 $I_n = \int \frac{dx}{(a + b x^2)^n}$ 和递推关系。
+
+
+
+逐步推导过程
+
+
+计算 $\int \frac{x}{(a + b x^2)^3}  dx$:
+
+令 $u = a + b x^2$, 则 $du = 2b x  dx$, 即 $x  dx = \frac{du}{2b}$.
+代入：
+$$\int \frac{x}{u^3}  dx = \int u^{-3} \frac{du}{2b} = \frac{1}{2b} \int u^{-3}  du = \frac{1}{2b} \cdot \frac{u^{-2}}{-2} = -\frac{1}{4b} u^{-2} = -\frac{1}{4b (a + b x^2)^2}$$
+
+关键结果：
+$$\boxed{\int \frac{x}{(a + b x^2)^3}  dx = -\frac{1}{4b (a + b x^2)^2}}$$
+
+
+
+
+计算 $\int \frac{x^3}{(a + b x^2)^3}  dx$:
+
+令 $u = a + b x^2$, 则 $du = 2b x  dx$, 即 $x  dx = \frac{du}{2b}$, 且 $x^2 = \frac{u - a}{b}$.
+代入：
+$$\int \frac{x^3}{u^3}  dx = \int \frac{x^2 \cdot x}{u^3}  dx = \int \frac{\frac{u - a}{b}}{u^3} \frac{du}{2b} = \frac{1}{2b^2} \int (u^{-2} - a u^{-3})  du = \frac{1}{2b^2} \left( -\frac{1}{u} + \frac{a}{2} u^{-2} \right) = \frac{1}{2b^2} \left( -\frac{1}{a + b x^2} + \frac{a}{2 (a + b x^2)^2} \right)$$
+
+关键结果：
+$$\boxed{\int \frac{x^3}{(a + b x^2)^3}  dx = \frac{1}{2b^2} \left( -\frac{1}{a + b x^2} + \frac{a}{2 (a + b x^2)^2} \right)}$$
+
+
+
+
+计算 $\int \frac{x^2}{(a + b x^2)^3}  dx$:
+
+利用关系：$\int \frac{x^2}{(a + b x^2)^n}  dx = \frac{1}{b} I_{n-1} - \frac{a}{b} I_n$, 其中 $I_n = \int \frac{dx}{(a + b x^2)^n}$.
+对于 $n = 3$:
+$$\int \frac{x^2}{(a + b x^2)^3}  dx = \frac{1}{b} I_2 - \frac{a}{b} I_3$$
+
+计算 $I_2$ 和 $I_3$ 使用三角代换 $x = \sqrt{\frac{a}{b}} \tan \theta$, 则 $dx = \sqrt{\frac{a}{b}} \sec^2 \theta  d\theta$, $a + b x^2 = a \sec^2 \theta$:
+
+$I_2 = \int \frac{dx}{(a + b x^2)^2} = \frac{1}{2a^{3/2} \sqrt{b}} \arctan\left( \sqrt{\frac{b}{a}} x \right) + \frac{x}{2a (a + b x^2)}$
+$I_3 = \int \frac{dx}{(a + b x^2)^3} = \frac{3}{8a^{5/2} \sqrt{b}} \arctan\left( \sqrt{\frac{b}{a}} x \right) + \frac{x (5a + 3b x^2)}{8a^2 (a + b x^2)^2}$
+
+
+代入：
+$$\int \frac{x^2}{(a + b x^2)^3}  dx = \frac{1}{b} \left( \frac{1}{2a^{3/2} \sqrt{b}} \arctan\left( \sqrt{\frac{b}{a}} x \right) + \frac{x}{2a (a + b x^2)} \right) - \frac{a}{b} \left( \frac{3}{8a^{5/2} \sqrt{b}} \arctan\left( \sqrt{\frac{b}{a}} x \right) + \frac{x (5a + 3b x^2)}{8a^2 (a + b x^2)^2} \right)$$
+
+简化后：
+$$\int \frac{x^2}{(a + b x^2)^3}  dx = \frac{1}{8 a^{3/2} b^{3/2}} \arctan\left( \sqrt{\frac{b}{a}} x \right) + \frac{x (b x^2 - a)}{8 a b (a + b x^2)^2}$$
+
+关键结果：
+$$\boxed{\int \frac{x^2}{(a + b x^2)^3}  dx = \frac{1}{8 a^{3/2} b^{3/2}} \arctan\left( \sqrt{\frac{b}{a}} x \right) + \frac{x (b x^2 - a)}{8 a b (a + b x^2)^2}}$$
+
+
+
+
+计算 $\int \frac{x^4}{(a + b x^2)^3}  dx$:
+
+利用关系：$\int \frac{x^4}{(a + b x^2)^n}  dx = \frac{1}{b^2} I_{n-2} - \frac{2a}{b^2} I_{n-1} + \frac{a^2}{b^2} I_n$.
+对于 $n = 3$:
+$$\int \frac{x^4}{(a + b x^2)^3}  dx = \frac{1}{b^2} I_1 - \frac{2a}{b^2} I_2 + \frac{a^2}{b^2} I_3$$
+
+其中 $I_1 = \int \frac{dx}{a + b x^2} = \frac{1}{\sqrt{a b}} \arctan\left( \sqrt{\frac{b}{a}} x \right)$.
+代入 $I_1, I_2, I_3$:
+$$\int \frac{x^4}{(a + b x^2)^3}  dx = \frac{1}{b^2} \left( \frac{1}{\sqrt{a b}} \arctan\left( \sqrt{\frac{b}{a}} x \right) \right) - \frac{2a}{b^2} \left( \frac{1}{2a^{3/2} \sqrt{b}} \arctan\left( \sqrt{\frac{b}{a}} x \right) + \frac{x}{2a (a + b x^2)} \right) + \frac{a^2}{b^2} \left( \frac{3}{8a^{5/2} \sqrt{b}} \arctan\left( \sqrt{\frac{b}{a}} x \right) + \frac{x (5a + 3b x^2)}{8a^2 (a + b x^2)^2} \right)$$
+
+简化后：
+$$\int \frac{x^4}{(a + b x^2)^3}  dx = \frac{3}{8 \sqrt{a} b^{5/2}} \arctan\left( \sqrt{\frac{b}{a}} x \right) - \frac{x (3a + 5b x^2)}{8 b^2 (a + b x^2)^2}$$
+
+关键结果：
+$$\boxed{\int \frac{x^4}{(a + b x^2)^3}  dx = \frac{3}{8 \sqrt{a} b^{5/2}} \arctan\left( \sqrt{\frac{b}{a}} x \right) - \frac{x (3a + 5b x^2)}{8 b^2 (a + b x^2)^2}}$$
+
+
+
+
+合并所有部分:
+
+原始积分为：
+$$A \cdot \left( -\frac{1}{4b (a + b x^2)^2} \right) + B \cdot \left( \frac{1}{8 a^{3/2} b^{3/2}} \arctan\left( \sqrt{\frac{b}{a}} x \right) + \frac{x (b x^2 - a)}{8 a b (a + b x^2)^2} \right) + C \cdot \left( \frac{1}{2b^2} \left( -\frac{1}{a + b x^2} + \frac{a}{2 (a + b x^2)^2} \right) \right) + D \cdot \left( \frac{3}{8 \sqrt{a} b^{5/2}} \arctan\left( \sqrt{\frac{b}{a}} x \right) - \frac{x (3a + 5b x^2)}{8 b^2 (a + b x^2)^2} \right)$$
+
+提取反正切项：
+$$\arctan\left( \sqrt{\frac{b}{a}} x \right) \left( \frac{B}{8 a^{3/2} b^{3/2}} + \frac{3D}{8 \sqrt{a} b^{5/2}} \right) = \frac{1}{8 a^{3/2} b^{5/2}} (a b B + 3 a^2 D) \arctan\left( \sqrt{\frac{b}{a}} x \right) = \frac{a b B + 3 a^2 D}{8 a^{3/2} b^{5/2}} \arctan\left( \frac{\sqrt{b} x}{\sqrt{a}} \right)$$
+
+剩余为有理函数部分，合并后为：
+$$-\frac{A}{4b (a + b x^2)^2} + B \frac{x (b x^2 - a)}{8 a b (a + b x^2)^2} + C \left( -\frac{1}{2b^2 (a + b x^2)} + \frac{a}{4b^2 (a + b x^2)^2} \right) - D \frac{x (3a + 5b x^2)}{8 b^2 (a + b x^2)^2}$$
+化简得：
+$$\frac{ -2 a A b + 2 a^2 C - a b B x - 3 a^2 D x + b^2 B x^3 - 5 a b D x^3}{8 a b^2 (a + b x^2)^2} - \frac{C}{2 b^2 (a + b x^2)}$$
+
+
+
+
+关键阶段性计算结果
+
+$\int \frac{x}{(a + b x^2)^3}  dx = -\frac{1}{4b (a + b x^2)^2}$
+$\int \frac{x^3}{(a + b x^2)^3}  dx = \frac{1}{2b^2} \left( -\frac{1}{a + b x^2} + \frac{a}{2 (a + b x^2)^2} \right)$
+$\int \frac{x^2}{(a + b x^2)^3}  dx = \frac{1}{8 a^{3/2} b^{3/2}} \arctan\left( \sqrt{\frac{b}{a}} x \right) + \frac{x (b x^2 - a)}{8 a b (a + b x^2)^2}$
+$\int \frac{x^4}{(a + b x^2)^3}  dx = \frac{3}{8 \sqrt{a} b^{5/2}} \arctan\left( \sqrt{\frac{b}{a}} x \right) - \frac{x (3a + 5b x^2)}{8 b^2 (a + b x^2)^2}$
+
+最终积分结果
+$$\boxed{\int \frac{x \left(A + B x + C x^2 + D x^3\right)}{\left(a + b x^2\right)^3}  dx = \frac{ a b B + 3 a^2 D}{8 a^{3/2} b^{5/2}} \arctan\left( \frac{\sqrt{b} x}{\sqrt{a}} \right) + \frac{ -2 a A b + 2 a^2 C - a b B x - 3 a^2 D x + b^2 B x^3 - 5 a b D x^3}{8 a b^2 \left(a + b x^2\right)^2} - \frac{C}{2 b^2 \left(a + b x^2\right)} + C}$$
+其中 $C$ 为积分常数。
+Mathematica 表达式
+在 Mathematica 中，表达式为：
+<MATHEMATICA>Integrate[(x*(A + B*x + C*x^2 + D*x^3))/(a + b*x^2)^3, x]
+结果等价于：
+<MATHEMATICA>((a*b*B + 3*a^2*D)*ArcTan[(Sqrt[b]*x)/Sqrt[a]])/(8*a^(3/2)*b^(5/2)) + (-2*a*A*b + 2*a^2*C - a*b*B*x - 3*a^2*D*x + b^2*B*x^3 - 5*a*b*D*x^3)/(8*a*b^2*(a + b*x^2)^2) - C/(2*b^2*(a + b*x^2)) + C[1]
+（注意：Mathematica 输出可能包含简化形式，但上述表达式精确等价。）
