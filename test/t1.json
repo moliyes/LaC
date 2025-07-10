@@ -2,11 +2,11 @@
   {
     "id": "problem_1",
     "input": {
-      "latex": "\\frac{\\log \\left(\\tan \\left(\\frac{x}{2}+\\frac{\\pi }{8}\\right)\\right)}{\\sqrt{2}}",
+      "latex": "\\dfrac{1}{4(a^{2} + b^{2})^{2}}\\left[2a(a^{2} - b^{2})(x - \\alpha) + 4a^{2}b\\ln\\left| a\\cos x + b\\sin x \\right| - a(a^{2} - 3b^{2})\\sin 2(x - \\alpha) - b(3a^{2} - b^{2})\\cos 2(x - \\alpha)\\right]",
       "mathematica": null
     },
     "reference": {
-      "latex": "\\frac{\\tanh ^{-1}\\left(\\frac{\\cos (x)-\\sin (x)}{\\sqrt{2}}\\right)}{\\sqrt{2}}",
+      "latex": "\\frac{a x}{2 \\left(a^2+b^2\\right)}-\\frac{a b^2 x}{\\left(a^2+b^2\\right)^2}+\\frac{b \\sin ^2(x)}{2 \\left(a^2+b^2\\right)}-\\frac{a \\sin (x) \\cos (x)}{2 \\left(a^2+b^2\\right)}+\\frac{a^2 b \\log (a \\cos (x)+b \\sin (x))}{\\left(a^2+b^2\\right)^2}",
       "mathematica": null
     }
   }

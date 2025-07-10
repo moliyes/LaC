@@ -44,26 +44,46 @@ class MathVerifier:
             print(f"LaTeX 转换失败: '{latex_str}'\n错误: {str(e)}")
             return None
                 
-    def is_equivalent(self, expr1, expr2):
-        """检查两个 Mathematica 表达式是否等价"""
+    def is_equivalent(self, expr1, expr2, variable='x'):
+        """
+        检查两个表达式是否为同一个不定积分的结果，即它们的导数是否相等。
+        
+        Args:
+            expr1 (str): 第一个 Mathematica 表达式的字符串表示。
+            expr2 (str): 第二个 Mathematica 表达式的字符串表示。
+            variable (str): 积分变量的符号，默认为 'x'。
+            
+        Returns:
+            bool: 如果两个表达式的导数相等，则返回 True，否则返回 False。
+        """
         if not self.session:
-            print("Error: WolframLanguageSession is not active.")
+            print("Error: WolframLanguageSession is not active for is_integral_equivalent.")
+            return False
+            
+        if not expr1 or not expr2 or not isinstance(expr1, str) or not isinstance(expr2, str):
+            print(f"Error: Invalid integral expressions provided. expr1='{expr1}', expr2='{expr2}'")
             return False
         try:
-            # 构建等价性检查表达式
-            # FullSimplify[expr1 == expr2] 是更通用的数学等价性检查
-            check_expr = wl.FullSimplify(
-                wl.Equal(
-                    wl.ToExpression(expr1), # 将 Mathematica 表达式字符串转换为 Wolfram Language 表达式对象
-                    wl.ToExpression(expr2)
-                )
-            )
-            result = self.session.evaluate(check_expr)
-            # 如果等价，FullSimplify[expr1 == expr2] 的结果通常是 True
+            # 将变量字符串转换为 Wolfram Language Symbol 对象
+            sym_variable = wl.Symbol(variable)
+            # 评估表达式字符串为 Wolfram Language 表达式对象
+            parsed_expr1 = wl.ToExpression(expr1)
+            parsed_expr2 = wl.ToExpression(expr2)
+            # 计算两个表达式的导数
+            deriv_expr1 = wl.D(parsed_expr1, sym_variable)
+            deriv_expr2 = wl.D(parsed_expr2, sym_variable)
+            # 再次使用 FullSimplify 检查这两个导数的差是否为 0
+            # FullSimplify[deriv1 - deriv2 == 0] 或者 FullSimplify[deriv1 == deriv2]
+            check_derivs_equality = wl.FullSimplify(wl.Equal(deriv_expr1, deriv_expr2))
+            
+            result = self.session.evaluate(check_derivs_equality)
+            
+            # 如果导数相等，FullSimplify 应该返回 True
             return result == True
         except Exception as e:
-            print(f"等价性检查失败: '{expr1}' vs '{expr2}'\n错误: {str(e)}")
+            print(f"Integral equivalence check failed for derivatives of '{expr1}' vs '{expr2}' (variable '{variable}').\n错误: {type(e).__name__}: {str(e)}")
             return False
+
                 
     def process_test_case(self, test_case):
         """处理单个测试用例"""
