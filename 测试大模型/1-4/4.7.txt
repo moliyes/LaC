@@ -1,0 +1,61 @@
+562.0s 正确
+
+任务解答
+分析积分的基本特征和可能的解法策略
+被积函数为 $\frac{\sin^2(x) \cos(x)}{a \cos(x) + b \sin(x)}$。分子 $\sin^2(x) \cos(x)$ 是三角函数乘积，分母 $a \cos(x) + b \sin(x)$ 是 $\cos(x)$ 和 $\sin(x)$ 的线性组合。通过三角恒等式，将分子简化为：
+$$\sin^2(x) \cos(x) = \frac{1}{4} (\cos(x) - \cos(3x))$$
+因此，积分转化为：
+$$\int \frac{\sin^2(x) \cos(x)}{a \cos(x) + b \sin(x)}  dx = \frac{1}{4} \int \frac{\cos(x) - \cos(3x)}{a \cos(x) + b \sin(x)}  dx = \frac{1}{4} \left( \int \frac{\cos(x)}{a \cos(x) + b \sin(x)}  dx - \int \frac{\cos(3x)}{a \cos(x) + b \sin(x)}  dx \right)$$
+设 $D = a \cos(x) + b \sin(x)$，其模为 $R = \sqrt{a^2 + b^2}$，相移角 $\alpha = \arctan\left(\frac{b}{a}\right)$，使得 $D = R \cos(x - \alpha)$。利用此形式，计算两个积分：
+
+第一个积分 $\int \frac{\cos(x)}{D}  dx$
+第二个积分 $\int \frac{\cos(3x)}{D}  dx$
+
+逐步推导过程
+
+
+计算 $\int \frac{\cos(x)}{D}  dx$：
+$$D = R \cos(x - \alpha), \quad \cos(x) = \cos((x - \alpha) + \alpha) = \cos(x - \alpha) \cos \alpha - \sin(x - \alpha) \sin \alpha$$
+代入积分：
+$$\int \frac{\cos(x)}{D}  dx = \frac{1}{R} \int \frac{\cos(x - \alpha) \cos \alpha - \sin(x - \alpha) \sin \alpha}{\cos(x - \alpha)}  dx = \frac{1}{R} \int \left( \cos \alpha - \sin \alpha \tan(x - \alpha) \right) dx$$
+令 $u = x - \alpha$，则：
+$$\frac{1}{R} \left[ \cos \alpha \int du - \sin \alpha \int \tan u  du \right] = \frac{1}{R} \left[ \cos \alpha  u - \sin \alpha (-\ln |\cos u|) \right] + C$$
+代入 $\cos \alpha = \frac{a}{R}$, $\sin \alpha = \frac{b}{R}$，并还原 $u = x - \alpha$：
+$$\int \frac{\cos(x)}{D}  dx = \frac{1}{R^2} \left( a (x - \alpha) + b \ln |D| \right) + C$$
+
+
+计算 $\int \frac{\cos(3x)}{D}  dx$：
+$$\cos(3x) = \cos(3(x - \alpha) + 3\alpha) = \cos(3u) \cos 3\alpha - \sin(3u) \sin 3\alpha, \quad u = x - \alpha$$
+代入积分：
+$$\int \frac{\cos(3x)}{D}  dx = \frac{1}{R} \int \frac{\cos(3u) \cos 3\alpha - \sin(3u) \sin 3\alpha}{\cos u}  du$$
+使用三倍角公式：
+$$\frac{\cos 3u}{\cos u} = 2 \cos 2u - 1, \quad \frac{\sin 3u}{\cos u} = \tan u (1 + 2 \cos 2u)$$
+积分化为：
+$$\frac{1}{R} \int \left[ \cos 3\alpha (2 \cos 2u - 1) - \sin 3\alpha \tan u (1 + 2 \cos 2u) \right] du$$
+分别计算各部分积分：
+$$\int (2 \cos 2u - 1)  du = \sin 2u - u, \quad \int \tan u (1 + 2 \cos 2u)  du = -\cos 2u + \ln |\cos u|$$
+代入并简化，再代入 $\cos 3\alpha = \frac{4a^3 - 3a R^2}{R^3}$, $\sin 3\alpha = \frac{3b R^2 - 4b^3}{R^3}$, $R^2 = a^2 + b^2$：
+$$\int \frac{\cos(3x)}{D}  dx = \frac{1}{R^4} \left[ (a^3 - 3a b^2) (\sin 2u - u) + (3a^2 b - b^3) (\cos 2u - \ln |\cos u|) \right] + C$$
+其中 $u = x - \alpha$, $\ln |\cos u| = \ln |D| - \ln R$.
+
+
+计算原积分：
+$$\int \frac{\sin^2(x) \cos(x)}{a \cos(x) + b \sin(x)}  dx = \frac{1}{4} \left( \int \frac{\cos(x)}{D}  dx - \int \frac{\cos(3x)}{D}  dx \right)$$
+令 $K = \int \frac{\cos(x)}{D}  dx - \int \frac{\cos(3x)}{D}  dx$，代入上述结果并简化：
+$$K = \frac{2a (a^2 - b^2)}{R^4} (x - \alpha) + \frac{4a^2 b}{R^4} \ln |D| - \frac{a (a^2 - 3b^2)}{R^4} \sin 2(x - \alpha) - \frac{b (3a^2 - b^2)}{R^4} \cos 2(x - \alpha) + C'$$
+其中 $C'$ 包含常数项。原积分为：
+$$\frac{1}{4} K = \frac{1}{4 R^4} \left[ 2a (a^2 - b^2) (x - \alpha) + 4a^2 b \ln |D| - a (a^2 - 3b^2) \sin 2(x - \alpha) - b (3a^2 - b^2) \cos 2(x - \alpha) \right] + C$$
+其中 $R^2 = a^2 + b^2$, $\alpha = \arctan\left(\frac{b}{a}\right)$, $D = a \cos x + b \sin x$.
+
+
+关键的阶段性计算结果
+
+分子简化：$\sin^2(x) \cos(x) = \frac{1}{4} (\cos(x) - \cos(3x))$
+积分分解：$\int \frac{\sin^2(x) \cos(x)}{a \cos(x) + b \sin(x)}  dx = \frac{1}{4} \left( \int \frac{\cos(x)}{a \cos(x) + b \sin(x)}  dx - \int \frac{\cos(3x)}{a \cos(x) + b \sin(x)}  dx \right)$
+第一个积分结果：$\int \frac{\cos(x)}{a \cos(x) + b \sin(x)}  dx = \frac{1}{a^2 + b^2} \left( a (x - \alpha) + b \ln |a \cos x + b \sin x| \right) + C$
+第二个积分结果：$\int \frac{\cos(3x)}{a \cos(x) + b \sin(x)}  dx = \frac{1}{(a^2 + b^2)^2} \left[ (a^3 - 3a b^2) (\sin 2(x - \alpha) - (x - \alpha)) + (3a^2 b - b^3) (\cos 2(x - \alpha) - \ln |a \cos x + b \sin x|) \right] + C$
+组合结果：见最终解答
+
+最终解答
+$$\boxed{\int \frac{\sin^{2} x \cos x}{a \cos x + b \sin x}  dx = \dfrac{1}{4(a^{2} + b^{2})^{2}}\left[2a(a^{2} - b^{2})(x - \alpha) + 4a^{2}b\ln\left| a\cos x + b\sin x \right| - a(a^{2} - 3b^{2})\sin 2(x - \alpha) - b(3a^{2} - b^{2})\cos 2(x - \alpha)\right] + C}$$
+其中 $\alpha = \arctan\left(\dfrac{b}{a}\right)$，且 $a^2 + b^2 \neq 0$。

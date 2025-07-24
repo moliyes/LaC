@@ -1,0 +1,69 @@
+438.8s 错误
+
+任务描述
+计算以下表达式关于 $x$ 的不定积分：
+$$\int \frac{x}{\log^{\frac{3}{2}}(a x^n)}  dx$$
+其中 $a$ 和 $n$ 是常数，且 $\log$ 表示自然对数（即以 $e$ 为底的对数）。
+解法策略分析
+被积函数为 $\frac{x}{\log^{\frac{3}{2}}(a x^n)}$。首先，简化对数部分：
+$$\log(a x^n) = \log a + \log(x^n) = \log a + n \log x.$$
+因此，积分变为：
+$$\int \frac{x}{(\log a + n \log x)^{\frac{3}{2}}}  dx.$$
+通过代换法简化表达式。设：
+$$u = \log(a x^n) = \log a + n \log x,$$
+则：
+$$du = \frac{n}{x}  dx \implies dx = \frac{x}{n}  du.$$
+同时，将 $x$ 用 $u$ 表示：
+$$a x^n = e^u \implies x^n = \frac{e^u}{a} \implies x = \left( \frac{e^u}{a} \right)^{\frac{1}{n}} = a^{-\frac{1}{n}} e^{\frac{u}{n}}.$$
+因此：
+$$x^2 = \left( a^{-\frac{1}{n}} e^{\frac{u}{n}} \right)^2 = a^{-\frac{2}{n}} e^{\frac{2u}{n}}.$$
+代入积分：
+$$\int \frac{x}{u^{\frac{3}{2}}} \cdot \frac{x}{n}  du = \int \frac{x^2}{n u^{\frac{3}{2}}}  du = \int \frac{a^{-\frac{2}{n}} e^{\frac{2u}{n}}}{n u^{\frac{3}{2}}}  du = \frac{a^{-\frac{2}{n}}}{n} \int e^{\frac{2u}{n}} u^{-\frac{3}{2}}  du.$$
+其中 $k = \frac{2}{n} > 0$（假设 $n > 0$），积分简化为：
+$$\frac{a^{-\frac{2}{n}}}{n} \int e^{k u} u^{-\frac{3}{2}}  du.$$
+现在，计算 $\int e^{k u} u^{-\frac{3}{2}}  du$。通过代换 $w = u^{\frac{1}{2}}$，则：
+$$u = w^2, \quad du = 2w  dw,$$
+积分变为：
+$$\int e^{k u} u^{-\frac{3}{2}}  du = \int e^{k w^2} (w^2)^{-\frac{3}{2}} \cdot 2w  dw = \int e^{k w^2} w^{-3} \cdot 2w  dw = 2 \int e^{k w^2} w^{-2}  dw = 2 \int \frac{e^{k w^2}}{w^2}  dw.$$
+计算 $\int \frac{e^{k w^2}}{w^2}  dw$。注意到：
+$$\frac{d}{dw} \left( \frac{e^{k w^2}}{w} \right) = e^{k w^2} \cdot 2k w \cdot w^{-1} + e^{k w^2} \cdot (-w^{-2}) = 2k e^{k w^2} - w^{-2} e^{k w^2},$$
+因此：
+$$w^{-2} e^{k w^2} = 2k e^{k w^2} - \frac{d}{dw} \left( \frac{e^{k w^2}}{w} \right).$$
+积分得：
+$$\int w^{-2} e^{k w^2}  dw = \int \left( 2k e^{k w^2} - \frac{d}{dw} \left( \frac{e^{k w^2}}{w} \right) \right) dw = 2k \int e^{k w^2}  dw - \frac{e^{k w^2}}{w} + C_1.$$
+其中 $\int e^{k w^2}  dw$ 是高斯积分，其结果为误差函数（error function）：
+$$\int e^{k w^2}  dw = \int e^{(\sqrt{k} w)^2}  dw.$$
+令 $t = \sqrt{k} w$，则 $dw = \frac{dt}{\sqrt{k}}$，代入得：
+$$\int e^{k w^2}  dw = \int e^{t^2} \frac{dt}{\sqrt{k}} = \frac{1}{\sqrt{k}} \int e^{t^2}  dt = \frac{1}{\sqrt{k}} \cdot \frac{\sqrt{\pi}}{2} \erf(t) + C_2 = \frac{\sqrt{\pi}}{2 \sqrt{k}} \erf(\sqrt{k} w) + C_2.$$
+因此：
+$$\int w^{-2} e^{k w^2}  dw = 2k \left( \frac{\sqrt{\pi}}{2 \sqrt{k}} \erf(\sqrt{k} w) \right) - \frac{e^{k w^2}}{w} + C_1 = \sqrt{\pi k}  \erf(\sqrt{k} w) - \frac{e^{k w^2}}{w} + C_1.$$
+代回原表达式：
+$$2 \int \frac{e^{k w^2}}{w^2}  dw = 2 \left( \sqrt{\pi k}  \erf(\sqrt{k} w) - \frac{e^{k w^2}}{w} \right) + C_3 = 2 \sqrt{\pi k}  \erf(\sqrt{k} w) - 2 \frac{e^{k w^2}}{w} + C_3.$$
+其中 $C_1, C_2, C_3$ 是积分常数。现在，$w = u^{\frac{1}{2}}$，且 $u = \log(a x^n)$，所以：
+$$w = \sqrt{u} = \sqrt{\log(a x^n)}, \quad e^{k w^2} = e^{k u} = e^{\frac{2u}{n}}.$$
+且：
+$$e^{\frac{2u}{n}} = e^{\frac{2}{n} \log(a x^n)} = (a x^n)^{\frac{2}{n}} = a^{\frac{2}{n}} x^{2}.$$
+因此：
+$$\int e^{k u} u^{-\frac{3}{2}}  du = 2 \sqrt{\pi k}  \erf\left( \sqrt{k} \sqrt{\log(a x^n)} \right) - 2 \frac{a^{\frac{2}{n}} x^{2}}{\sqrt{\log(a x^n)}} + C_3.$$
+代入 $k = \frac{2}{n}$：
+$$\sqrt{k} = \sqrt{\frac{2}{n}}, \quad \sqrt{\pi k} = \sqrt{\pi \cdot \frac{2}{n}} = \sqrt{\frac{2\pi}{n}}.$$
+所以：
+$$\int e^{k u} u^{-\frac{3}{2}}  du = 2 \sqrt{\frac{2\pi}{n}} \erf\left( \sqrt{\frac{2}{n}} \sqrt{\log(a x^n)} \right) - 2 \frac{a^{\frac{2}{n}} x^{2}}{\sqrt{\log(a x^n)}} + C_3.$$
+注意：
+$$\sqrt{\frac{2}{n}} \sqrt{\log(a x^n)} = \sqrt{\frac{2 \log(a x^n)}{n}}.$$
+代回原积分：
+$$\frac{a^{-\frac{2}{n}}}{n} \int e^{k u} u^{-\frac{3}{2}}  du = \frac{a^{-\frac{2}{n}}}{n} \left[ 2 \sqrt{\frac{2\pi}{n}} \erf\left( \sqrt{\frac{2 \log(a x^n)}{n}} \right) - 2 \frac{a^{\frac{2}{n}} x^{2}}{\sqrt{\log(a x^n)}} \right] + C.$$
+简化：
+$$= \frac{a^{-\frac{2}{n}}}{n} \cdot 2 \sqrt{\frac{2\pi}{n}} \erf\left( \sqrt{\frac{2 \log(a x^n)}{n}} \right) - \frac{a^{-\frac{2}{n}}}{n} \cdot 2 a^{\frac{2}{n}} \frac{x^{2}}{\sqrt{\log(a x^n)}} + C$$
+$$= \frac{2 a^{-\frac{2}{n}} \sqrt{\frac{2\pi}{n}} }{n} \erf\left( \sqrt{\frac{2 \log(a x^n)}{n}} \right) - \frac{2}{n} \frac{x^{2}}{\sqrt{\log(a x^n)}} + C$$
+= \frac{2 \sqrt{2\pi} }{n^{\frac{3}{2}} a^{\frac{2}{n}} \erf\left( \sqrt{\frac{2 \log(a x^n)}{n}} \right) - \frac{2}{n} \frac{x^{2}}{\sqrt{\log(a x^n)}} + C.
+其中利用了 $a^{-\frac{2}{n}} a^{\frac{2}{n}} = 1$ 和 $\sqrt{\frac{2\pi}{n}} / n = \frac{\sqrt{2\pi}}{n^{3/2}}$。
+最终解答
+因此，不定积分为：
+\boxed{\int \frac{x}{\log^{\frac{3}{2}}\left(a x^{n}\right)  dx = -\frac{2}{n} \frac{x^{2}}{\sqrt{\log\left(a x^{n}\right)}} + \frac{2 \sqrt{2\pi}}{n^{\frac{3}{2}} a^{\frac{2}{n}} \erf\left( \sqrt{\frac{2 \log\left(a x^{n}\right)}{n}} \right) + C}
+其中 $\erf(z) = \frac{2}{\sqrt{\pi}} \int_{0}^{z} e^{-t^{2}}  dt$ 是误差函数，$C$ 是积分常数。
+说明
+
+该结果假设 $n > 0$ 且 $\log(a x^n) > 0$ 以确保积分定义。
+误差函数 $\erf$ 是标准特殊函数，常用于表示此类积分。
+如果 $n < 0$，需要根据具体情况进行调整，但通常 $n$ 为正常数。

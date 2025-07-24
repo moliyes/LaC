@@ -1,0 +1,59 @@
+429.6s 正确
+
+任务解决方案
+问题分析
+计算不定积分：
+$$\int \frac{F^{a + b x}}{x^{3/2}}  dx$$
+其中 $F$, $a$, 和 $b$ 是常数，且 $F > 0$, $F \neq 1$（确保 $\ln F$ 定义），并假设 $x > 0$ 以避免奇点。
+被积函数为 $\frac{F^{a + b x}}{x^{3/2}}$。首先，注意到 $F^{a + b x} = F^a \cdot F^{b x}$，且 $F^a$ 是常数，可提取到积分外：
+$$\int \frac{F^{a + b x}}{x^{3/2}}  dx = F^a \int \frac{F^{b x}}{x^{3/2}}  dx$$
+令 $k = b \ln F$（因为 $F^{b x} = e^{(b \ln F) x} = e^{k x}$)，则积分化为：
+$$F^a \int \frac{e^{k x}}{x^{3/2}}  dx$$
+因此，问题转化为计算 $\int \frac{e^{k x}}{x^{3/2}}  dx$。
+该积分具有形式 $\int x^c e^{\beta x}  dx$，其中 $c = -3/2$ 和 $\beta = k$。此类积分通常无法用初等函数表示，但可用特殊函数（如虚误差函数 $\erfi(z)$）表示。解法策略包括代换和分部积分，最终将结果用 $\erfi$ 函数表达。
+解法推导
+考虑积分：
+$$I = \int \frac{e^{k x}}{x^{3/2}}  dx$$
+为简化，作代换 $u = \sqrt{x}$，则 $x = u^2$，$dx = 2u  du$：
+$$I = \int \frac{e^{k u^2}}{(u^2)^{3/2}} \cdot 2u  du = \int \frac{e^{k u^2}}{u^3} \cdot 2u  du = 2 \int u^{-2} e^{k u^2}  du$$
+现在，计算 $\int u^{-2} e^{k u^2}  du$。使用分部积分法：
+
+令 $v = e^{k u^2}$, $dw = u^{-2}  du$
+则 $dv = 2k u e^{k u^2}  du$, $w = \int u^{-2}  du = -u^{-1}$
+
+分部积分公式为：
+$$\int v  dw = v w - \int w  dv$$
+代入：
+$$\int u^{-2} e^{k u^2}  du = e^{k u^2} \cdot (-u^{-1}) - \int (-u^{-1}) \cdot 2k u e^{k u^2}  du = -\frac{e^{k u^2}}{u} + 2k \int e^{k u^2}  du$$
+其中，$\int e^{k u^2}  du$ 是标准积分，可用虚误差函数表示。虚误差函数定义为：
+$$\erfi(z) = -i \erf(i z) = \frac{2}{\sqrt{\pi}} \int_0^z e^{t^2}  dt$$
+且：
+$$\int e^{k u^2}  du = \frac{\sqrt{\pi}}{2 \sqrt{k}} \erfi(\sqrt{k}  u) + C, \quad k \neq 0$$
+（当 $k = 0$ 时，积分退化为初等函数，但此处 $k = b \ln F$，若 $b = 0$ 或 $F = 1$ 则需单独处理，但问题中 $F$ 为底数，通常 $F > 0, F \neq 1$，故假设 $k \neq 0$。）
+因此：
+$$\int u^{-2} e^{k u^2}  du = -\frac{e^{k u^2}}{u} + 2k \cdot \frac{\sqrt{\pi}}{2 \sqrt{k}} \erfi(\sqrt{k}  u) + C = -\frac{e^{k u^2}}{u} + \sqrt{\pi} \sqrt{k}  \erfi(\sqrt{k}  u) + C$$
+代回 $I = 2 \int u^{-2} e^{k u^2}  du$：
+$$I = 2 \left( -\frac{e^{k u^2}}{u} + \sqrt{\pi} \sqrt{k}  \erfi(\sqrt{k}  u) \right) + C = -2 \frac{e^{k u^2}}{u} + 2 \sqrt{\pi k}  \erfi(\sqrt{k}  u) + C$$
+还原代换 $u = \sqrt{x}$：
+$$e^{k u^2} = e^{k x}, \quad u = \sqrt{x}$$
+所以：
+$$I = -2 \frac{e^{k x}}{\sqrt{x}} + 2 \sqrt{\pi k}  \erfi(\sqrt{k}  \sqrt{x}) + C = -2 \frac{e^{k x}}{\sqrt{x}} + 2 \sqrt{\pi k}  \erfi(\sqrt{k x}) + C$$
+其中 $\sqrt{k} \sqrt{x} = \sqrt{k x}$。
+现在，代回原积分：
+$$\int \frac{F^{a + b x}}{x^{3/2}}  dx = F^a \cdot I = F^a \left( -2 \frac{e^{k x}}{\sqrt{x}} + 2 \sqrt{\pi k}  \erfi(\sqrt{k x}) \right) + C$$
+并替换 $k = b \ln F$：
+$$e^{k x} = F^{b x}, \quad \sqrt{k} = \sqrt{b \ln F}, \quad \sqrt{k x} = \sqrt{b x \ln F}$$
+因此：
+$$\int \frac{F^{a + b x}}{x^{3/2}}  dx = F^a \left( -2 \frac{F^{b x}}{\sqrt{x}} + 2 \sqrt{\pi (b \ln F)}  \erfi(\sqrt{b x \ln F}) \right) + C$$
+简化表达式：
+$$\sqrt{\pi (b \ln F)} = \sqrt{\pi b \ln F}$$
+故最终结果为：
+$$\boxed{\int \frac{F^{a+b x}}{x^{3/2}}  dx = F^{a} \left( -2 F^{b x} x^{-1/2} + 2 \sqrt{\pi b \ln F}  \erfi\left( \sqrt{b x \ln F} \right) \right) + C}$$
+结果验证
+
+当 $b = 0$ 时，$k = 0$，原积分为 $\int \frac{F^a}{x^{3/2}}  dx = F^a \int x^{-3/2}  dx = F^a \cdot (-2) x^{-1/2} + C$。在结果中，当 $k \to 0$，第一项 $-2 F^a x^{-1/2}$，第二项 $2 \sqrt{\pi k} \erfi(\sqrt{k x}) \to 0$（因为 $\erfi(0) = 0$ 且 $\sqrt{k} \to 0$），故一致。
+当 $F = e$（自然对数底），则 $\ln F = 1$，$k = b$，结果简化为 $\int \frac{e^{a + b x}}{x^{3/2}}  dx = e^a \left( -2 e^{b x} x^{-1/2} + 2 \sqrt{\pi b}  \erfi(\sqrt{b x}) \right) + C$，符合预期。
+
+此解使用虚误差函数，是标准特殊函数，适用于实数域（当 $k > 0$ 时直接实数；当 $k < 0$ 时，$\sqrt{k}$ 为虚数，但 $\erfi$ 保证结果为实数）。
+最终解答
+$$\boxed{\int \frac{F^{a+b x}}{x^{3/2}}  dx = F^{a} \left( -2 F^{b x} x^{-1/2} + 2 \sqrt{\pi b \ln F}  \erfi\left( \sqrt{b x \ln F} \right) \right) + C}$$

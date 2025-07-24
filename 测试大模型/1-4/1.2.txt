@@ -1,0 +1,52 @@
+92.4s a+bx>0时结果正确，没有考虑a+bx<0的情形
+
+问题分析
+需要计算不定积分：
+$$\int \frac{\sqrt{a^2 + 2abx + b^2x^2}}{(d + ex)^6}  dx$$
+首先，分析被积函数。注意到分子中的表达式 $a^2 + 2abx + b^2x^2$ 是一个完全平方：
+$$a^2 + 2abx + b^2x^2 = (a + bx)^2$$
+因此，平方根部分可简化为：
+$$\sqrt{(a + bx)^2} = |a + bx|$$
+在不定积分中，通常假设在积分区间内 $a + bx > 0$（即表达式为正），因此 $\sqrt{a^2 + 2abx + b^2x^2} = a + bx$。于是，积分简化为：
+$$\int \frac{a + bx}{(d + ex)^6}  dx$$
+这是一个有理函数的积分，分母为 $(d + ex)^6$（六次幂）。采用代换法求解，设 $u = d + ex$。
+代换过程
+设：
+$$u = d + ex$$
+则：
+$$du = e  dx \implies dx = \frac{du}{e}$$
+解出 $x$：
+$$x = \frac{u - d}{e}$$
+代入分子 $a + bx$：
+$$a + bx = a + b \left( \frac{u - d}{e} \right) = a + \frac{b}{e}(u - d) = \frac{ae}{e} + \frac{bu - bd}{e} = \frac{bu + (ae - bd)}{e}$$
+原积分变为：
+$$\int \frac{\frac{bu + (ae - bd)}{e}}{u^6} \cdot \frac{du}{e} = \int \frac{bu + (ae - bd)}{e \cdot u^6} \cdot \frac{du}{e} = \frac{1}{e^2} \int \frac{bu + (ae - bd)}{u^6}  du$$
+将被积函数拆项：
+$$\frac{bu + (ae - bd)}{u^6} = b u^{-5} + (ae - bd) u^{-6}$$
+因此：
+$$\frac{1}{e^2} \int \left( b u^{-5} + (ae - bd) u^{-6} \right)  du$$
+积分计算
+使用幂函数积分公式 $\int u^n  du = \frac{u^{n+1}}{n+1} + C$（$n \neq -1$）：
+$$\int u^{-5}  du = \int u^{-5}  du = \frac{u^{-4}}{-4} = -\frac{1}{4} u^{-4}$$
+$$\int u^{-6}  du = \frac{u^{-5}}{-5} = -\frac{1}{5} u^{-5}$$
+代入：
+$$\frac{1}{e^2} \left[ b \left( -\frac{1}{4} u^{-4} \right) + (ae - bd) \left( -\frac{1}{5} u^{-5} \right) \right] + C = \frac{1}{e^2} \left[ -\frac{b}{4} u^{-4} - \frac{ae - bd}{5} u^{-5} \right] + C$$
+变量回代
+将 $u = d + ex$ 代回：
+$$\frac{1}{e^2} \left[ -\frac{b}{4} (d + ex)^{-4} - \frac{ae - bd}{5} (d + ex)^{-5} \right] + C$$
+提取公因子 $(d + ex)^{-5}$：
+$$= -\frac{1}{e^2} (d + ex)^{-5} \left[ \frac{b}{4} (d + ex) + \frac{ae - bd}{5} \right] + C$$
+简化括号内表达式：
+$$\frac{b}{4} (d + ex) + \frac{ae - bd}{5} = \frac{bd}{4} + \frac{bex}{4} + \frac{ae}{5} - \frac{bd}{5} = \frac{bex}{4} + bd \left( \frac{1}{4} - \frac{1}{5} \right) + \frac{ae}{5} = \frac{bex}{4} + bd \cdot \frac{1}{20} + \frac{ae}{5}$$
+通分（分母为 20）：
+$$\frac{bex}{4} = \frac{5bex}{20}, \quad \frac{bd}{20} = \frac{bd}{20}, \quad \frac{ae}{5} = \frac{4ae}{20}$$
+所以：
+$$\frac{5bex}{20} + \frac{bd}{20} + \frac{4ae}{20} = \frac{5bex + bd + 4ae}{20}$$
+代入积分结果：
+$$-\frac{1}{e^2} (d + ex)^{-5} \cdot \frac{5bex + bd + 4ae}{20} + C = -\frac{5bex + bd + 4ae}{20e^2 (d + ex)^5} + C$$
+最终答案
+$$\boxed{-\dfrac{5\,b\,e\,x + b\,d + 4\,a\,e}{20\,e^{2}\,\left(d + e\,x\right)^{5}} + C}$$
+附注
+
+本解法假设 $a + bx > 0$，因此 $\sqrt{a^2 + 2abx + b^2x^2} = a + bx$。若 $a + bx < 0$，则平方根为 $-(a + bx)$，积分结果符号需调整，但通常考虑定义域内表达式为正。
+代换法为直接且有效的方法，其他方法（如部分分式）可能更复杂，此处不采用。

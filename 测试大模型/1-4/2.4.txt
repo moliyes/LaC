@@ -1,0 +1,93 @@
+296.4s 正确
+
+解决积分问题：$\int \sqrt{d + e x}  F^{c (a + b x)}  dx$
+步骤 1: 分析积分特征和策略
+被积函数为 $\sqrt{d + e x} \cdot F^{c (a + b x)}$，其中 $F, a, b, c, d, e$ 为常数，且 $F > 0$，$F \neq 1$。该函数包含一个线性项的平方根和一个指数函数。指数部分 $F^{c (a + b x)}$ 可简化为：
+$$F^{c (a + b x)} = F^{c a + c b x} = F^{c a} \cdot F^{c b x}$$
+其中 $F^{c a}$ 为常数。令 $K = F^{c a}$，则积分化为：
+$$\int \sqrt{d + e x} \cdot F^{c (a + b x)}  dx = K \int \sqrt{d + e x} \cdot F^{c b x}  dx$$
+进一步，$F^{c b x} = e^{\ln(F^{c b x})} = e^{c b x \ln F}$。令 $\lambda = c b \ln F$（常数），则：
+$$F^{c b x} = e^{\lambda x}$$
+积分变为：
+$$K \int \sqrt{d + e x} \cdot e^{\lambda x}  dx$$
+其中 $K = F^{c a}$。现在，问题化为计算 $\int \sqrt{d + e x} \cdot e^{\lambda x}  dx$。
+该积分涉及线性平方根与指数函数的乘积。尝试代换法：令 $u = d + e x$，则：
+$$du = e  dx \implies dx = \frac{du}{e}, \quad x = \frac{u - d}{e}$$
+于是：
+$$\sqrt{d + e x} = \sqrt{u}, \quad e^{\lambda x} = e^{\lambda \frac{u - d}{e}} = e^{\frac{\lambda}{e} u - \frac{\lambda d}{e}} = e^{-\frac{\lambda d}{e}} e^{\frac{\lambda}{e} u}$$
+令 $\mu = \frac{\lambda}{e}$, $C_1 = e^{-\frac{\lambda d}{e}}$（常数），则积分化为：
+$$K \int \sqrt{u} \cdot C_1 e^{\mu u} \cdot \frac{du}{e} = K C_1 \frac{1}{e} \int u^{1/2} e^{\mu u}  du$$
+其中 $K C_1 \frac{1}{e} = F^{c a} e^{-\lambda d / e} / e$。核心是计算 $\int u^{1/2} e^{\mu u}  du$，其中 $\mu = \frac{\lambda}{e} = \frac{c b \ln F}{e}$.
+若 $\mu = 0$（即 $c b \ln F = 0$)，则积分退化为 $\int \sqrt{d + e x}  dx = \frac{2}{3e} (d + e x)^{3/2} + C$。假设 $\mu \neq 0$，则需处理 $\int u^{1/2} e^{\mu u}  du$。该积分可通过代换 $v = \sqrt{u}$（即 $u = v^2$，$du = 2v  dv$) 进一步简化：
+$$\int u^{1/2} e^{\mu u}  du = \int v \cdot e^{\mu v^2} \cdot 2v  dv = 2 \int v^2 e^{\mu v^2}  dv$$
+现在计算 $\int v^2 e^{\mu v^2}  dv$。使用分部积分法，令：
+$$w = v, \quad dz = 2\mu v e^{\mu v^2}  dv$$
+则：
+$$dw = dv, \quad z = \int 2\mu v e^{\mu v^2}  dv = e^{\mu v^2} \quad (\text{因为 } \frac{d}{dv} e^{\mu v^2} = 2\mu v e^{\mu v^2})$$
+分部积分公式：
+$$\int w  dz = w z - \int z  dw$$
+代入：
+$$\int v^2 e^{\mu v^2}  dv = \frac{1}{2\mu} \int v \cdot 2\mu v e^{\mu v^2}  dv = \frac{1}{2\mu} \left( v e^{\mu v^2} - \int e^{\mu v^2}  dv \right)$$
+因此：
+$$2 \int v^2 e^{\mu v^2}  dv = 2 \cdot \frac{1}{2\mu} \left( v e^{\mu v^2} - \int e^{\mu v^2}  dv \right) = \frac{1}{\mu} v e^{\mu v^2} - \frac{1}{\mu} \int e^{\mu v^2}  dv$$
+代回 $v = \sqrt{u}$，得：
+$$\int u^{1/2} e^{\mu u}  du = \frac{1}{\mu} \sqrt{u} e^{\mu u} - \frac{1}{\mu} \int e^{\mu u} \cdot \frac{du}{2 \sqrt{u}} = \frac{\sqrt{u} e^{\mu u}}{\mu} - \frac{1}{2\mu} \int u^{-1/2} e^{\mu u}  du$$
+但更直接使用 $v$ 表示：
+$$\int u^{1/2} e^{\mu u}  du = \frac{\sqrt{u} e^{\mu u}}{\mu} - \frac{1}{\mu} \int e^{\mu v^2}  dv \quad \text{（其中 } v = \sqrt{u}\text{）}$$
+积分 $\int e^{\mu v^2}  dv$ 依赖于 $\mu$ 的符号，可用误差函数表示：
+
+若 $\mu < 0$，令 $\mu = -k$（$k > 0$)，则 $\int e^{-k v^2}  dv = \frac{\sqrt{\pi}}{2 \sqrt{k}} \text{erf}(\sqrt{k} v) + C$。
+若 $\mu > 0$，则 $\int e^{\mu v^2}  dv = \frac{\sqrt{\pi}}{2 \sqrt{\mu}} \text{erfi}(\sqrt{\mu} v) + C$，其中 $\text{erfi}(x) = -i \text{erf}(i x)$ 为虚误差函数。
+
+综上，$\int u^{1/2} e^{\mu u}  du$ 可表示为：
+$$\int u^{1/2} e^{\mu u}  du = \frac{\sqrt{u} e^{\mu u}}{\mu} - \frac{1}{\mu} \cdot \frac{\sqrt{\pi}}{2 \sqrt{|\mu|}} \times \begin{cases} 
+\text{erf}(\sqrt{-\mu} \sqrt{u}) & \mu < 0 \\ 
+\text{erfi}(\sqrt{\mu} \sqrt{u}) & \mu > 0 
+\end{cases} + C$$
+步骤 2: 代回原变量
+现在将结果代回原积分。首先，$\int u^{1/2} e^{\mu u}  du$ 中 $u = d + e x$，$\mu = \frac{c b \ln F}{e}$。原积分为：
+$$\int \sqrt{d + e x}  F^{c (a + b x)}  dx = F^{c a} e^{-\lambda d / e} \frac{1}{e} \int u^{1/2} e^{\mu u}  du$$
+其中 $\lambda = c b \ln F$，故 $e^{-\lambda d / e} = e^{-\mu d}$，且 $\mu = \frac{\lambda}{e} = \frac{c b \ln F}{e}$。因此：
+$$F^{c a} e^{-\lambda d / e} \frac{1}{e} = \frac{F^{c a} e^{-\mu d}}{e}$$
+代入：
+$$\int \sqrt{d + e x}  F^{c (a + b x)}  dx = \frac{F^{c a} e^{-\mu d}}{e} \left[ \frac{\sqrt{u} e^{\mu u}}{\mu} - \frac{1}{\mu} \cdot \frac{\sqrt{\pi}}{2 \sqrt{|\mu|}} \times \begin{cases} 
+\text{erf}(\sqrt{-\mu} \sqrt{u}) & \mu < 0 \\ 
+\text{erfi}(\sqrt{\mu} \sqrt{u}) & \mu > 0 
+\end{cases} \right] + C$$
+化简：
+
+第一项：$\frac{F^{c a} e^{-\mu d}}{e} \cdot \frac{\sqrt{u} e^{\mu u}}{\mu} = \frac{F^{c a} e^{-\mu d} \sqrt{u} e^{\mu u}}{e \mu}$
+由于 $e^{-\mu d} e^{\mu u} = e^{\mu (u - d)}$，且 $u - d = e x$，故 $e^{\mu (u - d)} = e^{\mu e x} = e^{\lambda x} = F^{c b x}$。又 $u = d + e x$，$\sqrt{u} = \sqrt{d + e x}$，且 $F^{c a} F^{c b x} = F^{c (a + b x)}$，所以：
+$$\frac{F^{c a} e^{-\mu d} \sqrt{u} e^{\mu u}}{e \mu} = \frac{F^{c (a + b x)} \sqrt{d + e x}}{e \mu}$$
+而 $\mu = \frac{c b \ln F}{e}$，故 $e \mu = c b \ln F$，因此：
+$$\frac{F^{c (a + b x)} \sqrt{d + e x}}{c b \ln F}$$
+
+第二项：$\frac{F^{c a} e^{-\mu d}}{e} \cdot \left( -\frac{1}{\mu} \cdot \frac{\sqrt{\pi}}{2 \sqrt{|\mu|}} \times \text{函数} \right) = -\frac{F^{c a} e^{-\mu d} \sqrt{\pi}}{e \mu \cdot 2 \sqrt{|\mu|}} \times \begin{cases} 
+\text{erf}(\sqrt{-\mu} \sqrt{u}) & \mu < 0 \\ 
+\text{erfi}(\sqrt{\mu} \sqrt{u}) & \mu > 0 
+\end{cases}$
+其中 $e^{-\mu d} = F^{-\frac{c b d}{e}}$（因为 $\mu d = \frac{c b \ln F}{e} d$，故 $e^{-\mu d} = e^{-\frac{c b d \ln F}{e}} = F^{-\frac{c b d}{e}}$），所以 $F^{c a} e^{-\mu d} = F^{c a - \frac{c b d}{e}}$。又 $\frac{1}{e \mu} = \frac{1}{c b \ln F}$，因此：
+$$-\frac{F^{c a - \frac{c b d}{e}} \sqrt{\pi}}{c b \ln F \cdot 2 \sqrt{|\mu|}} \times \begin{cases} 
+\text{erf}(\sqrt{-\mu} \sqrt{d + e x}) & \mu < 0 \\ 
+\text{erfi}(\sqrt{\mu} \sqrt{d + e x}) & \mu > 0 
+\end{cases}$$
+
+
+令 $\kappa = \mu = \frac{c b \ln F}{e}$，则最终结果为：
+$$\int \sqrt{d + e x}  F^{c (a + b x)}  dx = \frac{ \sqrt{d + e x}  F^{c (a + b x)} }{c b \ln F} - \frac{ F^{c a - \frac{c b d}{e}} \sqrt{\pi} }{2 c b \ln F \sqrt{|\kappa|}} \times \begin{cases} 
+\text{erf}\left( \sqrt{-\kappa} \sqrt{d + e x} \right) & \text{if } \kappa < 0 \\ 
+\text{erfi}\left( \sqrt{\kappa} \sqrt{d + e x} \right) & \text{if } \kappa > 0 
+\end{cases} + C$$
+其中 $\kappa = \frac{c b \ln F}{e}$，且 $\text{erfi}(x) = -i \text{erf}(i x)$。
+步骤 3: 特殊情况处理
+若 $\kappa = 0$（即 $c b \ln F = 0$)，则积分退化为：
+$$\int \sqrt{d + e x}  dx = \frac{2}{3e} (d + e x)^{3/2} + C$$
+但问题假设一般情况 $\kappa \neq 0$。
+最终答案
+$$\boxed{\int \sqrt{d + ex}  F^{c (a + bx)}  dx = \frac{ \sqrt{d + ex}  F^{c (a + bx)} }{cb \ln F} - \frac{ F^{ca - \frac{cbd}{e}} \sqrt{\pi} }{2 cb \ln F \sqrt{ \left| \dfrac{cb \ln F}{e} \right| }} \times \begin{cases} \operatorname{erf}\left( \sqrt{ -\dfrac{cb \ln F}{e} } \sqrt{d + ex} \right) & \text{if } \dfrac{cb \ln F}{e} < 0 \\ \operatorname{erfi}\left( \sqrt{ \dfrac{cb \ln F}{e} } \sqrt{d + ex} \right) & \text{if } \dfrac{cb \ln F}{e} > 0 \end{cases} + C}$$
+其中：
+
+$\operatorname{erf}(x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2}  dt$ 为误差函数，
+$\operatorname{erfi}(x) = -i \operatorname{erf}(i x)$ 为虚误差函数，
+常数 $a, b, c, d, e$ 满足 $d + e x > 0$（平方根定义域），且 $F > 0$，$F \neq 1$，$e \neq 0$，$c b \ln F \neq 0$，
+若 $c b \ln F = 0$，则积分为 $\frac{2}{3e} (d + e x)^{3/2} + C$。

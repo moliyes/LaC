@@ -1,0 +1,51 @@
+536.7s 正确
+
+任务分析与解法策略
+给定不定积分：
+$$\int \frac{\sin^2(a + b x + c x^2)}{x}  dx$$
+其中 $a, b, c$ 为常数。
+被积函数包含正弦平方项 $\sin^2(a + b x + c x^2)$，其参数为二次多项式 $a + b x + c x^2$，且分母为 $x$。正弦平方项可利用三角恒等式简化：
+$$\sin^2 \theta = \frac{1 - \cos 2\theta}{2}$$
+其中 $\theta = a + b x + c x^2$。代入后，积分可拆分为两部分：
+$$\int \frac{\sin^2 \theta}{x}  dx = \int \frac{1}{x} \cdot \frac{1 - \cos 2\theta}{2}  dx = \frac{1}{2} \int \frac{1}{x}  dx - \frac{1}{2} \int \frac{\cos(2a + 2b x + 2c x^2)}{x}  dx$$
+第一部分 $\int \frac{1}{x}  dx$ 是基本积分，结果为 $\ln |x|$。第二部分 $\int \frac{\cos(2a + 2b x + 2c x^2)}{x}  dx$ 较为复杂，其参数为二次函数。当 $c \neq 0$ 时，此积分无初等函数原函数，需保留积分形式或借助特殊函数（如余弦积分）。下面逐步推导。
+推导过程
+步骤 1: 应用三角恒等式
+设 $\theta = a + b x + c x^2$，则：
+$$\sin^2 \theta = \frac{1 - \cos 2\theta}{2} = \frac{1 - \cos(2a + 2b x + 2c x^2)}{2}$$
+因此：
+$$\int \frac{\sin^2 \theta}{x}  dx = \int \frac{1}{x} \cdot \frac{1 - \cos(2a + 2b x + 2c x^2)}{2}  dx = \frac{1}{2} \int \frac{1}{x}  dx - \frac{1}{2} \int \frac{\cos(2a + 2b x + 2c x^2)}{x}  dx$$
+步骤 2: 计算第一部分积分
+第一部分积分是标准形式：
+$$\int \frac{1}{x}  dx = \ln |x| + C_1$$
+其中 $C_1$ 为积分常数。因此：
+$$\frac{1}{2} \int \frac{1}{x}  dx = \frac{1}{2} \ln |x| + C_1$$
+步骤 3: 分析第二部分积分
+第二部分积分为：
+$$I_2 = \int \frac{\cos(2a + 2b x + 2c x^2)}{x}  dx$$
+参数 $2a + 2b x + 2c x^2$ 是二次多项式。为简化，完成平方：
+$$2c x^2 + 2b x + 2a = 2c \left( x^2 + \frac{b}{c} x \right) + 2a = 2c \left[ \left( x + \frac{b}{2c} \right)^2 - \left( \frac{b}{2c} \right)^2 \right] + 2a = 2c \left( x + \frac{b}{2c} \right)^2 + \left( 2a - \frac{b^2}{2c} \right)$$
+令：
+
+$k = 2c$
+$\beta = \frac{b}{2c}$
+$d = 2a - \frac{b^2}{2c}$
+$u = x + \beta$
+
+则 $dx = du$，且 $x = u - \beta$，代入得：
+$$I_2 = \int \frac{\cos(k u^2 + d)}{u - \beta}  du$$
+此积分依赖于参数 $k, \beta, d$。当 $\beta = 0$（即 $b = 0$) 时，可简化为余弦积分函数。但当 $\beta \neq 0$ 时，该积分无初等函数原函数，需保留积分形式或使用特殊函数（如通过变量变换与余弦积分关联）。
+步骤 4: 组合结果
+综合两部分，原积分为：
+$$\int \frac{\sin^2(a + b x + c x^2)}{x}  dx = \frac{1}{2} \ln |x| - \frac{1}{2} I_2 + C$$
+其中 $C$ 为积分常数，$I_2 = \int \frac{\cos(2a + 2b x + 2c x^2)}{x}  dx$。
+最终解答
+积分结果为：
+\boxed{\int \frac{\sin^{2}{\left(a + b x + c x^{2} \right)}{x}  dx = \frac{\ln{\left|x \right|}}{2} - \frac{1}{2} \int \frac{\cos{\left(2 a + 2 b x + 2 c x^{2} \right)}}{x}  dx + C}
+其中 $C$ 为积分常数。
+附加说明
+
+当 $b = 0$ 时，第二部分积分可化为余弦积分函数：
+$$\int \frac{\cos(2a + 2c x^2)}{x}  dx = \frac{1}{2} \operatorname{Ci}(2c x^2) \cos 2a - \frac{1}{2} \operatorname{Si}(2c x^2) \sin 2a + C_2$$
+其中 $\operatorname{Si}(z) = \int_0^z \frac{\sin t}{t}  dt$ 为正弦积分，$\operatorname{Ci}(z) = -\int_z^\infty \frac{\cos t}{t}  dt$ 为余弦积分。
+当 $b \neq 0$ 且 $c \neq 0$ 时，剩余积分无初等表达式，但可通过数值方法或特殊函数（如不完全伽马函数）求解，具体形式依赖于参数值。
